@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    {{ $user->fullName() }} are logged in!
                 </div>
             </div>
         </div>
