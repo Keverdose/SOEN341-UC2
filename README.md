@@ -10,6 +10,7 @@ Software process followed is the agile methodology.
 ## Members 
 
 * Conor Geoghegan
+* Daniel Minkin
 * Kevin Ye
 * Line Ghanem
 * Marc-antoine Dubé
