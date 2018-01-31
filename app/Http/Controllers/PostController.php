@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -37,8 +40,10 @@ class PostController extends Controller
     {
         $post = new Post;
         
+        $post->user_id = 1;
         $post->title = $request->post_title;
         $post->body = $request->post_description;
+        $post->save();
 
         return redirect()->route('open_posts');
     }

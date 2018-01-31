@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $connection = 'mysql';
+    protected $connection = 'sqlite';
     protected $primaryKey = 'id';
-    protected $table = 'Post';
-    protected $fillable = array(
+    protected $table = 'Posts';
+    protected $fillable = [
         'user_id',
         'title',
         'body'
-    );
+    ];
 
     public $timestamps = true;
 
