@@ -25,11 +25,11 @@ class PageController extends Controller
      */
     public function create_post()
     {        
-        return view('create', compact('user'));
+        return view('create');
     }
 
     public function open_posts()
     {
-        return view('open_posts', compact('user'));
+        return view('open_posts');
     }
 }
