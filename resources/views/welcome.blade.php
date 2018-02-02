@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/create') }}">Create a Post</a>
+                    <a href="{{ url('/post/create') }}">Create a Post</a>
                     <a href="{{ url('/open_posts') }}">Current Posts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>

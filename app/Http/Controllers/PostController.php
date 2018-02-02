@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.open_posts', ['posts' => Post::all()]);
     }
 
     /**
@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -39,16 +39,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post;
-        
-        $user = Auth::user();
 
-        $post->user_id = $user->id;
-        $post->title = $request->post_title;
-        $post->body = $request->post_description;
-        $post->save();
+        Auth::user()->posts()->save(new Post($request->all()));
 
-        return redirect()->route('open_posts');
+        $request->session()->flash('success', 'Post creation was successful!');
+
+        return redirect('/home');
+
+//        $post = new Post;
+//
+//        $user = Auth::user();
+//
+//        $post->user_id = $user->id;
+//        $post->title = $request->post_title;
+//        $post->body = $request->post_description;
+//        $post->save();
+//
+//        return redirect()->route('open_posts');
     }
 
     /**
@@ -59,7 +66,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post->load(['user', 'votes']);
+
+        //dd($post->toArray());
+        return view('posts.open_posts', ['post' => $post]);
     }
 
     /**

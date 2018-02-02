@@ -19,7 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/create', 'PageController@create_post');
-Route::get('/open_posts', ['as' => 'open_posts', 'uses' => 'PageController@open_posts']);
+Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 
-Route::post('/create', 'PostController@store');
+    Route::get('/create', 'PostController@create');
+    Route::post('/', 'PostController@store');
+    //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
+
+
+});
+
+
+//Route::get('/create', 'PageController@create_post');
+Route::get('/open_posts', 'PostController@index');
+//
+//Route::post('/create', 'PostController@store');

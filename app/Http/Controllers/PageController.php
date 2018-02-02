@@ -30,6 +30,6 @@ class PageController extends Controller
 
     public function open_posts()
     {
-        return view('open_posts');
+        return view('posts.open_posts');
     }
 }
