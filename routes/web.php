@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
+
+    Route::get('/create', 'PostController@create');
+    Route::post('/', 'PostController@store');
+    //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
+
+
+});
+
+
+//Route::get('/create', 'PageController@create_post');
+Route::get('/open_posts', 'PostController@index');
+//
+//Route::post('/create', 'PostController@store');
