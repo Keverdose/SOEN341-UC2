@@ -1,6 +1,10 @@
 
 ## SOEN 341 - UC2
 
+## Badges
+
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/7fa17af2184e5ac502453fb1c8675c65903c93257277c72829c57de3cbb719d6.svg?columns=all)](https://waffle.io/Keverdose/SOEN341-UC2)
+
 ## INTRODUCTION
 This is the repository for GROUP UC2 for Winter 2018 SOEN 341. 
 The project involves making a question and answers website similar to StackOverflow while adding innovative features to make it better. 
