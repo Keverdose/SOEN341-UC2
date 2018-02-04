@@ -33,3 +33,5 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 Route::get('/open_posts', 'PostController@index');
 //
 //Route::post('/create', 'PostController@store');
+
+Route::post('comments/{post_id}',['uses'=>'CommentController@store','as' =>'comments.store']);
