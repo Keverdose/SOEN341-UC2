@@ -40,11 +40,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        Auth::user()->posts()->save(new Post($request->all()));
+        $post = new Post($request->all());
+        Auth::user()->posts()->save($post);
+
 
         $request->session()->flash('success', 'Post creation was successful!');
 
-        return redirect()->home();
+        return redirect(route('post.show', ['post' => $post->id]));
 
     }
 
@@ -56,10 +58,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->load(['user', 'votes']);
+        //$post->load(['user']);
 
         //dd($post->toArray());
-        return view('posts.open_posts', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**

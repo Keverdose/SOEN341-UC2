@@ -24,6 +24,7 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 
     Route::get('/create', 'PostController@create');
     Route::post('/', 'PostController@store');
+    Route::get('/{post}', 'PostController@show')->name('post.show');
     //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
 
 
@@ -35,4 +36,4 @@ Route::get('/open_posts', 'PostController@index');
 //
 //Route::post('/create', 'PostController@store');
 
-Route::post('comments/{post_id}',['uses'=>'CommentController@store','as' =>'comments.store']);
+Route::post('comments/{post}','CommentController@store')->name('comments.store');

@@ -8,11 +8,10 @@ use App\Post;
 use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
-    public function store(Request $request, $post_id){
+    public function store(Request $request, Post $post){
     	$this->validate($request,array(
     		'comment' => 'required'
     	));
-    	$post = Post::find($post_id);
     	$id = Auth::user()->id;
     	$name = Auth::user()->first_name;
 
@@ -23,7 +22,7 @@ class CommentController extends Controller
     	$comment->post()->associate($post);
     	$comment->user()->associate($id);
     	$comment->save();
-    	return redirect()->home();
+    	return back();
     }
 }
 
