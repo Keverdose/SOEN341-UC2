@@ -44,18 +44,8 @@ class PostController extends Controller
 
         $request->session()->flash('success', 'Post creation was successful!');
 
-        return redirect('/home');
+        return redirect()->home();
 
-//        $post = new Post;
-//
-//        $user = Auth::user();
-//
-//        $post->user_id = $user->id;
-//        $post->title = $request->post_title;
-//        $post->body = $request->post_description;
-//        $post->save();
-//
-//        return redirect()->route('open_posts');
     }
 
     /**
