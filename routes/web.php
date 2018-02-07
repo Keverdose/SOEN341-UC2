@@ -13,16 +13,18 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 
     Route::get('/create', 'PostController@create');
     Route::post('/', 'PostController@store');
+    Route::get('/{post}', 'PostController@show')->name('post.show');
     //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
 
 
@@ -33,3 +35,5 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 Route::get('/open_posts', 'PostController@index');
 //
 //Route::post('/create', 'PostController@store');
+
+Route::post('comments/{post}','CommentController@store')->name('comments.store');

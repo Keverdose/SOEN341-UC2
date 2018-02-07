@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $connection = 'sqlite';
-    protected $primaryKey = 'id';
-    protected $table = 'Posts';
     protected $fillable = [
         'title', 'body'
+    ];
+
+    protected $with = [
+        'user'
     ];
 
     public $timestamps = true;
@@ -20,6 +21,11 @@ class Post extends Model
     }
     function votes(){
         return $this->belongsToMany(User::class, 'users_posts', 'post_id', 'user_id')->withPivot('is_upvote');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }
