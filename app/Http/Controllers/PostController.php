@@ -84,13 +84,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //$updated_post = Post::find($post->id);
-        //$updated_post->body = $request->post;
-        //Auth::user()->posts()->save($updated_post);
-
         $post->update($request->all());
 
-        //return view ('posts.show', ['post' => $post]);
         return redirect(route('post.show', ['post' => $post->id]));
     }
 
