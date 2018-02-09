@@ -9,6 +9,7 @@
 
     @if(Auth::id()==$post->user_id)
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Edit</a>
+         <a href="{{ route('post.delete', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
         <br>
     @endif
 
