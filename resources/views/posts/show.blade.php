@@ -19,6 +19,7 @@
 
         @if(Auth::id()==$comment->user_id)
             <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Edit</a>
+             <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
             <br>
         @endif
 

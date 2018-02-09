@@ -29,7 +29,16 @@ class CommentController extends Controller
     {
         return view ('comments.edit', ['comment' => $comment]);
 	}
-	
+	public function delete(Comment $comment)
+    {
+        return view ('comments.delete', ['comment' => $comment]);
+	}
+	public function destroy($id){
+		$comment = Comment::find($id);
+		$post_id = $comment->post->id;
+		$comment->delete();
+		return redirect()->route('post.show',$post_id);
+	}
 	public function update(Request $request, Comment $comment)
     {
 		$comment->update($request->all());
