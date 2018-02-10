@@ -98,6 +98,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $comments = $post->comments;
+        foreach ($comments as $comment) {
+           $comment->delete();
+        }
+        
         $post->delete();
         return view('posts.open_posts', ['posts' => Post::all()]);
         
