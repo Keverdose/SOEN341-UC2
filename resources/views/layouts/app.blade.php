@@ -43,7 +43,21 @@
                         <a href="{{ url('/post/create') }}">Create a Post</a>
                         <a href="{{ url('/open_posts') }}">View Open Posts</a>
                         <a href="{{ url('/home') }}">My Posts</a>
-                        <a href="{{ url('/home') }}">logout</a>@else
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+
+
+
+
+
+
+                        @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a> @endauth
                     </div>

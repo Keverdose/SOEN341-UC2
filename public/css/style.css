@@ -42,11 +42,34 @@ body {
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 22px;
     height: 50px
 }
 
 .m-b-md {
     margin-bottom: 30px;
+}
+
+.function-title {
+    color: darkred;
+}
+
+.function-sub {
+    color: goldenrod !important;
+}
+
+.btn-conu {
+    color: #fff;
+    background-color: goldenrod;
+    border-color: darkred;
+    -webkit-transition-duration: .8s;
+    /* Safari */
+    transition-duration: .8s;
+}
+
+.btn-conu:hover {
+    color: darkred;
+    background-color: #fff;
+    border-color: goldenrod;
 }
