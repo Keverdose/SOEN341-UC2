@@ -11,7 +11,8 @@
 
     @foreach($posts as $post)
     <h2><a class="function-sub" href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a></h2>
-
+    <div><small>By {{ $post->user->fullName() }}</small></div>
+    <br>
     <p>{{ $post->body }}</p>
 
 
