@@ -23,6 +23,18 @@ class CommentController extends Controller
     	$comment->user()->associate($id);
     	$comment->save();
     	return back();
+	}
+	
+	public function edit(Comment $comment)
+    {
+        return view ('comments.edit', ['comment' => $comment]);
+	}
+	
+	public function update(Request $request, Comment $comment)
+    {
+		$comment->update($request->all());
+
+        return redirect(route('post.show', ['post' => $comment->post_id]));
     }
 }
 
