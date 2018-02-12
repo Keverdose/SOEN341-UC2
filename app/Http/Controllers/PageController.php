@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use app\User;
+use App\Post;
+use App\Comment;
 
 class PageController extends Controller
 {
@@ -31,5 +33,11 @@ class PageController extends Controller
     public function open_posts()
     {
         return view('posts.open_posts');
+    }
+
+    public function user_act()
+    {
+        return view('user_activity', ['posts' => Post::all()->whereIn('user_id', [Auth::id()])], 
+                                     ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]);
     }
 }
