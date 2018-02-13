@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index');
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
 Route::post('comment/{comment}/updated', 'CommentController@update')->name('comment.update');
 
+Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
+
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
 
