@@ -85,7 +85,7 @@
                 <div class="links">
                     <a href="{{ url('/post/create') }}">Create a Post</a>
                     <a href="{{ url('/open_posts') }}">Current Posts</a>
-                    <a href="https://laravel-news.com">News</a>
+                    <a href="{{ route('user.activity', ['user_id' => Auth::id()])}}">My Activity</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
