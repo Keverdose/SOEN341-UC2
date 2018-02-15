@@ -95,8 +95,21 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $comments = $post->comments;
+        foreach ($comments as $comment) {
+           $comment->delete();
+        }
+        
+        $post->delete();
+        return view('posts.open_posts', ['posts' => Post::all()]);
+        
     }
+    public function delete(Post $post)
+    {
+        return view ('posts.delete', ['post' => $post]);
+    }
+
 }
