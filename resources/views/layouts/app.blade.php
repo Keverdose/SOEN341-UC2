@@ -18,15 +18,15 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top nav-background ">
             <div class="container">
                 <div class="navbar-header">
 
 
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        StackUnderflow
+                    <a class="navbar-brand  nav-title" href="{{ url('/') }}">
+                        <span class="function-sub ">S</span>tack<span class="function-sub">U</span>nderflow
                     </a>
                 </div>
 
@@ -37,7 +37,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <div class="top-right links">
+                    <div class="top-right linkstwo">
                         @auth
                         <a href="{{ url('/home') }}">Home</a>
                         <a href="{{ url('/post/create') }}">Create a Post</a>

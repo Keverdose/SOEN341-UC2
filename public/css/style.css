@@ -37,7 +37,18 @@ body {
 }
 
 .links>a {
-    color: #636b6f;
+    color: black;
+    padding: 14px 15px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 22px;
+    height: 50px
+}
+
+.linkstwo>a {
+    color: white;
     padding: 14px 15px;
     font-weight: 600;
     text-decoration: none;
@@ -57,6 +68,15 @@ body {
 
 .function-sub {
     color: goldenrod !important;
+}
+
+.nav-title {
+    font-weight: 600;
+    color: white !important;
+}
+
+.nav-background {
+    background-color: darkred;
 }
 
 .btn-conu {
