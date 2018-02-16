@@ -18,26 +18,12 @@
 
     <h3 class="function-title">Comments</h3>
     @foreach($post->comments as $comment)
-    <p>{{$comment->comment}}</p>
-    <p><small> by {{$comment->name}}</small></p>
+            <h4>{{$comment->name}} commented: </h4>
+            <p>{{$comment->comment}}</p>
     @endforeach
 
-    <div>
-        <form action="{{ route('comments.store', ['post' => $post->id] )}}" method="post">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label class="function-sub" for="">Comment</label>
-                <textarea name="comment" id="" cols="20" rows="10" class="form-control"></textarea>
-            </div>
-            <button class="btn btn-conu" type="submit">Add Comment</button>
-        </form>
+    
 
-        <!--        {{Form::open(['route'=>['comments.store',$post->id,'method'=>'POST']])}}-->
-        <!--            {{Form::label('comment',"Comment:")}}-->
-        <!--            {{Form::textarea('comment',null,['class' =>'form-control'])}}-->
-        <!--            {{Form::submit('Add Comment')}}-->
-        <!--        {{Form::close()}}-->
-    </div>
     @endforeach
 
 </div>
