@@ -6,7 +6,7 @@
     <div class="function-sub"><small>By {{ $post->user->fullName() }}</small></div>
     <br>
     <br>
-    <p>{{ $post->body }}}</p>
+    <p>{{ $post->body }}</p>
     @if(Auth::id()==$post->user_id)
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Edit</a>
          <a href="{{ route('post.delete', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
