@@ -18,6 +18,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
+
 Route::get('/home', 'HomeController@index');
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
 Route::post('comment/{comment}/updated', 'CommentController@update')->name('comment.update');
