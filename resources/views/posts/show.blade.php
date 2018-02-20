@@ -7,7 +7,7 @@
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
 
-    @if(Auth::id()==$post->user_id)
+    @if(Auth::id()==$post->user_id and $post->solved==FALSE)
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Edit</a>
          <a href="{{ route('post.delete', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
         <br>
@@ -18,11 +18,16 @@
     <h4>{{$comment->name}} commented: </h4>
     <p>{{$comment->comment}}</p>
 
-        @if(Auth::id()==$comment->user_id)
-            <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Edit</a>
-             <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
-            <br>
+        @if($post->solved==FALSE)
+            @if(Auth::id()==$comment->user_id)
+                <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Edit</a>
+                <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
+            @endif
+            @if(Auth::id()==$post->user_id)
+                <a href="{{ route('comment.answer', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Best Answer</a>
+            @endif
         @endif
+        <br>
 
     @endforeach
 
