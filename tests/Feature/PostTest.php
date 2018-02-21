@@ -22,7 +22,8 @@ class PostTest extends TestCase
     public function test_post_creation(){
         factory(Post::class)->create([
             'title' => 'test title',
-            'body' => 'test body'
+            'body' => 'test body',
+            'solved' => FALSE
         ]);
 
         $this->assertDatabaseHas('posts', ['body' => 'test body']);
