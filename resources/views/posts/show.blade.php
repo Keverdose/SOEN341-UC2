@@ -6,6 +6,7 @@
     <div><small>By {{ $post->user->fullName() }}</small></div>
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
+    <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
 
     @if(Auth::id()==$post->user_id and $post->solved==FALSE)
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Edit</a>
@@ -17,6 +18,7 @@
     @foreach($post->comments as $comment)
     <h4>{{$comment->name}} commented: </h4>
     <p>{{$comment->comment}}</p>
+    <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
 
         @if($post->solved==FALSE)
             @if(Auth::id()==$comment->user_id)
