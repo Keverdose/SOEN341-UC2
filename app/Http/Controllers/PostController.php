@@ -16,9 +16,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($status)
     {
-        return view('posts.open_posts', ['posts' => Post::all()]);
+        if ( $status == 'open')
+        {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
+        }
+        else
+        {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', TRUE)]);
+        }
     }
 
     /**
@@ -41,6 +48,7 @@ class PostController extends Controller
     {
 
         $post = new Post($request->all());
+        $post->solved=FALSE;
         Auth::user()->posts()->save($post);
 
 
@@ -104,7 +112,7 @@ class PostController extends Controller
         }
         
         $post->delete();
-        return view('posts.open_posts', ['posts' => Post::all()]);
+        return view('posts.list_posts', ['posts' => Post::all()]);
         
     }
     public function delete(Post $post)
