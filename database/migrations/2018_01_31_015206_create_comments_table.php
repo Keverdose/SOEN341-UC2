@@ -25,7 +25,7 @@ class CreateCommentsTable extends Migration
             
         });
 
-        Schema::table('comments',function($table){
+        Schema::table('comment',function($table){
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -38,10 +38,10 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table){
+        Schema::table('comment', function (Blueprint $table){
           $table->dropForeign(['user_id']);
           $table->dropForeign(['post_id']);
         });
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('comments');
     }
 }
