@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 //use App\User;
 
 use Illuminate\Http\Request;
@@ -16,9 +17,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($status)
     {
-        return view('posts.open_posts', ['posts' => Post::all()]);
+        if ( $status == 'open')
+        {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
+        }
+        else
+        {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', TRUE)]);
+        }
     }
 
     /**
@@ -41,6 +49,7 @@ class PostController extends Controller
     {
 
         $post = new Post($request->all());
+        $post->solved=FALSE;
         Auth::user()->posts()->save($post);
 
 
@@ -75,6 +84,19 @@ class PostController extends Controller
         return view ('posts.edit', ['post' => $post]);
     }
 
+    public function reopen(Post $post)
+    {
+        $post->solved = FALSE;
+        $post->title = str_replace("[SOLVED]","",$post->title);
+        $post->save();
+
+        Comment::where('post_id', $post->id)
+          ->where('best_answer', TRUE)
+          ->update(['best_answer' => FALSE]);
+
+        return redirect()->route('post.show',$post->id);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -104,7 +126,7 @@ class PostController extends Controller
         }
         
         $post->delete();
-        return view('posts.open_posts', ['posts' => Post::all()]);
+        return view('posts.list_posts', ['posts' => Post::all()]);
         
     }
     public function delete(Post $post)
