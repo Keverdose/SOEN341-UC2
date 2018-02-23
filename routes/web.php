@@ -46,10 +46,6 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 
 });
 
-//Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
-//Route::get('/create', 'PageController@create_post');
 Route::get('/open_posts', 'PostController@index');
-//
-//Route::post('/create', 'PostController@store');
 
 Route::post('comments/{post}','CommentController@store')->name('comments.store');

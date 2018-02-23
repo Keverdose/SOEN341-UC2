@@ -66,10 +66,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                               <a href="{{ route('social.redirect', ['provider' => 'facebook'])}}" class="btn btn-primary">Login with Facebook</a>
-                            </div>
-                            <p style="margin-left:265px">OR</p>
-                            <div class="col-md-8 col-md-offset-4">
-                              <a href="{{ route('social.redirect', ['provider' => 'google'])}}" class="btn btn-primary">Login with Google +</a>
+                              <a href="{{ route('social.redirect', ['provider' => 'google'])}}" class="btn btn-primary">Login with Google+</a>
                             </div>
                         </div>
                     </form>
