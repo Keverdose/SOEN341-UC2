@@ -10,7 +10,7 @@ class Comment extends Model
     protected $primaryKey = 'id';
     protected $table = 'comment';
     protected $fillable = [
-        'body'
+        'comment'
     ];
 
        public function post()

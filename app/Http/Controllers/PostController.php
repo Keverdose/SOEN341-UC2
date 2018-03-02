@@ -72,7 +72,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view ('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -84,7 +84,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        return redirect(route('post.show', ['post' => $post->id]));
     }
 
     /**
@@ -93,8 +95,21 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $comments = $post->comments;
+        foreach ($comments as $comment) {
+           $comment->delete();
+        }
+        
+        $post->delete();
+        return view('posts.open_posts', ['posts' => Post::all()]);
+        
     }
+    public function delete(Post $post)
+    {
+        return view ('posts.delete', ['post' => $post]);
+    }
+
 }

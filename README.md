@@ -3,6 +3,8 @@
 
 ## Badges
 
+[![Build Status](https://travis-ci.com/Keverdose/SOEN341-UC2.svg?token=xXL3wyseCNM53yxjqqda&branch=master)](https://travis-ci.com/Keverdose/SOEN341-UC2)
+
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/7fa17af2184e5ac502453fb1c8675c65903c93257277c72829c57de3cbb719d6.svg?columns=all)](https://waffle.io/Keverdose/SOEN341-UC2)
 
 ## INTRODUCTION

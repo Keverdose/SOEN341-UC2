@@ -16,9 +16,11 @@ class Post extends Model
 
     public $timestamps = true;
 
+
     function user() {
         return $this->belongsTo(User::class);
     }
+
     function votes(){
         return $this->belongsToMany(User::class, 'users_posts', 'post_id', 'user_id')->withPivot('is_upvote');
     }
@@ -26,6 +28,10 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function content(){
+        return $this->body;
     }
 
 }
