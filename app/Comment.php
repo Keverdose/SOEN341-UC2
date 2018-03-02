@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $connection = 'sqlite';
+    protected $connection = 'mysql';
     protected $primaryKey = 'id';
     protected $table = 'comment';
     protected $fillable = [
