@@ -9,43 +9,68 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Post $post){
+	/**
+     * Create and store a comment with an association
+	 *  to the post and author.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, Post $post) {
     	$this->validate($request,array(
     		'comment' => 'required'
-    	));
+		));
+		
     	$id = Auth::user()->id;
     	$name = Auth::user()->first_name;
 
     	$comment = new Comment();
-
     	$comment->comment = $request->comment;
 		$comment->name = $name;
 		$comment->best_answer = FALSE;
     	$comment->post()->associate($post);
     	$comment->user()->associate($id);
-    	$comment->save();
+		$comment->save();
+		
     	return back();
 	}
 	
-	public function edit(Comment $comment)
-    {
+	/**
+     * Display a an edit form for the comment specicified.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function edit(Comment $comment) {
         return view ('comments.edit', ['comment' => $comment]);
 	}
 
-	public function delete(Comment $comment)
-    {
+	/**
+     * Delete the specified comment.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function delete(Comment $comment) {
         return view ('comments.delete', ['comment' => $comment]);
 	}
 
-	public function destroy($id){
+	/**
+     * Destroy the specified comment.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function destroy($id) {
 		$comment = Comment::find($id);
 		$post_id = $comment->post->id;
 		$comment->delete();
 		return redirect()->route('post.show',$post_id);
 	}
 
-	public function mark_answer($id)
-	{
+	/**
+     * Mark and save a comment as the best answer to a post.
+	 * Mark the post as solved and update its status.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function mark_answer($id) {
 		$comment = Comment::find($id);
 		$post_id = $comment->post->id;
 		$post = Post::find($post_id);
@@ -60,11 +85,14 @@ class CommentController extends Controller
 		return redirect()->route('post.show',$post_id);
 	}
 
-	public function update(Request $request, Comment $comment)
-    {
+	/**
+     * Update the specified comment.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function update(Request $request, Comment $comment) {
 		$comment->update($request->all());
 
         return redirect(route('post.show', ['post' => $comment->post_id]));
     }
 }
-

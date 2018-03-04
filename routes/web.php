@@ -34,6 +34,7 @@ Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.ac
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
+    
     Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
     Route::get('/{comment}/comment_answer', 'CommentController@mark_answer')->name('comment.answer');
 

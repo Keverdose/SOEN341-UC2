@@ -15,28 +15,16 @@ class PageController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
     /**
-     * Show the application dashboard.
+     * Show all activity specific to currently logged in user
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_post()
-    {        
-        return view('create');
-    }
-
-    public function open_posts()
-    {
-        return view('posts.open_posts');
-    }
-
-    public function user_act()
-    {
+    public function user_act() {
         return view('user_activity', ['posts' => Post::all()->whereIn('user_id', [Auth::id()])], 
                                      ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]);
     }
