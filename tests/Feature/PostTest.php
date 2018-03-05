@@ -23,6 +23,7 @@ class PostTest extends TestCase
         factory(Post::class)->create([
             'title' => 'test title',
             'body' => 'test body',
+            'category_id' => 1,
             'solved' => FALSE
         ]);
 
