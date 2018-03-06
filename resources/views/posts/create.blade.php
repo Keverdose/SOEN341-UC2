@@ -11,11 +11,13 @@
         </div>
         <div class="form-group">
             <label for="">Category</label>
+            @if($categories->count() != 0)
             <select class="form-control" name="Category">
-                 @foreach($categories as $category)
+                @foreach($categories as $category)
                 <option name ="category_id" value={{$category->id}}>{{$category->name}}</option>
-        @endforeach
+                @endforeach
             </select>
+            @endif
             <br>
              <a href="{{ url('/post/create/createCategory') }}" class="btn btn-xs btn-info pull-left" >Create a new category</a>
             
