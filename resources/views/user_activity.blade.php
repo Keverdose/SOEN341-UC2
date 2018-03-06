@@ -23,6 +23,5 @@
     @foreach($comments as $comment)
     <p><a href="{{route('post.show', ['post' => $comment->post_id])}}">{{ $comment->comment }}</a></p>
     @endforeach
-
 </div>
 @endsection

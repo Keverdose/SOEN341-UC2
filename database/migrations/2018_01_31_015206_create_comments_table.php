@@ -11,8 +11,7 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('comment', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->unsigned();
@@ -23,20 +22,19 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
 
+
         Schema::table('comment',function($table){	
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');	
             $table->foreign('user_id')->references('id')->on('users');	
         });
     }
-
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::table('comment', function (Blueprint $table){
+    public function down() {
+        Schema::table('comment', function (Blueprint $table) {
           $table->dropForeign(['user_id']);
           $table->dropForeign(['post_id']);
         });
