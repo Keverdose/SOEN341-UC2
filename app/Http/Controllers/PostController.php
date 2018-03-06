@@ -124,9 +124,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $comments = $post->comments;
-        foreach ($comments as $comment) {
-           $comment->delete();
-        }
         
         $post->delete();
         return view('posts.list_posts', ['posts' => Post::all()]);

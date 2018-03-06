@@ -15,19 +15,17 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comment', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id');
-            $table->integer('user_id');
+            $table->integer('post_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->text('comment');
             $table->boolean('best_answer');
             $table->timestamps();
-
-            
         });
 
-        Schema::table('comment',function($table){
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('comment',function($table){	
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');	
+            $table->foreign('user_id')->references('id')->on('users');	
         });
     }
 
@@ -42,6 +40,6 @@ class CreateCommentsTable extends Migration
           $table->dropForeign(['user_id']);
           $table->dropForeign(['post_id']);
         });
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('comment');
     }
 }
