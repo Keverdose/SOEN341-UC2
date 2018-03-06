@@ -23,8 +23,8 @@ class CreateCommentsTable extends Migration
         });
     
     Schema::table('comments',function($table){	
-        -            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');	
-        -            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');	
+            $table->foreign('user_id')->references('id')->on('users');
     });
 }
     /**
@@ -37,6 +37,6 @@ class CreateCommentsTable extends Migration
           $table->dropForeign(['user_id']);
           $table->dropForeign(['post_id']);
         });
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('comments');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\Category;
 //use App\User;
 
 use Illuminate\Http\Request;
@@ -31,8 +32,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view('posts.create');
+    public function create()
+    {
+        return view('posts.create',['categories' => Category::all()]);
     }
 
     /**
@@ -43,7 +45,9 @@ class PostController extends Controller
      */
     public function store(Request $request) {
         $post = new Post($request->all());
+        $post->category_id = $request->get('Category');
         $post->solved=FALSE;
+
         Auth::user()->posts()->save($post);
         $request->session()->flash('success', 'Post creation was successful!');
 

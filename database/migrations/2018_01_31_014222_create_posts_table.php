@@ -17,8 +17,13 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('body');
+            $table->integer('category_id')->unsigned();
             $table->boolean('solved');
             $table->timestamps();
+        });
+        Schema::table('posts',function($table){
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+           
         });
     }
 

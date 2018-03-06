@@ -34,4 +34,8 @@ class Post extends Model
     public function content() {
         return $this->body;
     }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
 }

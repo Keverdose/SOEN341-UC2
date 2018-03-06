@@ -7,7 +7,7 @@
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
     <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
-
+    <p>Posted in: {{$post->category->name}}</p>
     @if(Auth::id()==$post->user_id and $post->solved==FALSE)
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Edit</a>
         <a href="{{ route('post.delete', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>
