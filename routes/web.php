@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', function () {return view('welcome');})->name('home');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/profile', 'ProfileController@profile') ->name('profile');
+Route::post('/addProfile', 'ProfileController@addProfile') ->name('addProfile');
+
 
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
 Route::post('comment/{comment}/updated', 'CommentController@update')->name('comment.update');

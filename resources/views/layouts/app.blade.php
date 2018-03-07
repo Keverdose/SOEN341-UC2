@@ -39,14 +39,18 @@
                     <!-- Right Side Of Navbar -->
                     <div class="top-right linkstwo">
                         @auth
+                        
                         <a href="{{ url('/') }}">Home</a>
                         <a href="{{ url('/post/create') }}">Create a Post</a>
                         <a href="{{ url('/open/posts') }}">View Open Posts</a>
                         <a href="{{ url( route('user.activity', ['user_id' => Auth::id()])) }}">My Posts</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        <a href="{{ route('profile') }}">Profile</a>
+
+
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                             Logout
-                                        </a>
+                        </a>
+
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -59,7 +63,9 @@
 
                         @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a> @endauth
+                        <a href="{{ route('register') }}">Register</a> 
+                        @endauth
+                       
                     </div>
                 </div>
             </div>
