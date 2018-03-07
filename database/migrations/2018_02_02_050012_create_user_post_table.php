@@ -11,14 +11,16 @@ class CreateUserPostTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('users_posts', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('post_id')->unsigned();
-            $table->foreign('post_id')->references('id')->on('posts');
             $table->boolean('is_upvote');
+        });
+
+        Schema::table('users_posts',function($table){	
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 
@@ -27,8 +29,7 @@ class CreateUserPostTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('users_posts');
     }
 }

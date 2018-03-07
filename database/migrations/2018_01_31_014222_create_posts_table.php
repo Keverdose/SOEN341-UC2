@@ -11,15 +11,19 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('body');
+            $table->integer('category_id')->unsigned();
             $table->boolean('solved');
             $table->timestamps();
+        });
+        Schema::table('posts',function($table){
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+           
         });
     }
 
@@ -28,8 +32,7 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('posts');
     }
 }

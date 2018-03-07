@@ -29,11 +29,13 @@ Route::post('comment/{comment}/destroyed', 'CommentController@destroy')->name('c
 Route::post('post/{post}/deleted', 'PostController@delete')->name('post.delete');
 Route::post('post/{post}/destroyed', 'PostController@destroy')->name('post.destroy');
 
+
 Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
 
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
+    
     Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
     Route::get('/{comment}/comment_answer', 'CommentController@mark_answer')->name('comment.answer');
 
@@ -43,9 +45,11 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}/post_destroy', 'PostController@destroy')->name('post.destroy');
     Route::get('/{post}/post_delete', 'PostController@delete')->name('post.delete');
 
-    Route::get('/create', 'PostController@create');
+    Route::get('/create', 'PostController@create')->name('post.create');
     Route::post('/', 'PostController@store');
     Route::get('/{post}', 'PostController@show')->name('post.show');
+    Route::post('/create/createCategory/store', 'CategoryController@store')->name('categories.store');
+    Route::get('/create/createCategory','CategoryController@createCategory')->name('categories.create');
     //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
 });
 
