@@ -61,6 +61,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post) {
+        $id = $post->increment('view_count');
+        $array = [
+            "view_count" => $id,];
+
+        $post->update($array);
         return view('posts.show', ['post' => $post]);
     }
 
