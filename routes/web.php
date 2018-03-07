@@ -49,7 +49,7 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}', 'PostController@show')->name('post.show');
     Route::post('/create/createCategory/store', 'CategoryController@store')->name('categories.store');
     Route::get('/create/createCategory','CategoryController@createCategory')->name('categories.create');
-    //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
+    Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)')->name('answer.vote');
 });
 
 Route::get('/{status}/posts', 'PostController@index')->name('posts.list');

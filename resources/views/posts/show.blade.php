@@ -16,6 +16,18 @@
         <a href="{{ route('post.reopen', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left" >Reopen Post</a>
     @endif
     <br>
+
+    <!-- Votes -->
+    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
+        {{csrf_field()}}
+        <button>Upvote</button>
+    </form>
+    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'down'])}}">
+        {{csrf_field()}}
+        <button>Downvote</button>
+    </form>
+    <!-- End Votes -->
+
     <h3>Comments</h3>
     @foreach($post->comments as $comment)
     <h4>{{$comment->name}} commented: </h4>
