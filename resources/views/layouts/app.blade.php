@@ -66,6 +66,15 @@
         </nav>
 
         @yield('content')
+        </br>
+        </br>
+
+        <footer class="footer-bottom">
+            <p> &#169;All rights reserved by StackUnderflow </p>
+
+
+        </footer>
+
     </div>
 
     <!-- Scripts -->

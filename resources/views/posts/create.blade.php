@@ -1,7 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
+@extends('layouts.app') @section('content')
+<div class="container wrap-rob">
     <h2>Create Your Post</h2>
     
     <form action="/post" method="post">
