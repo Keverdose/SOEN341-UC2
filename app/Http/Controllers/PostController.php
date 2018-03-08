@@ -144,12 +144,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     function vote(Post $post, $updown){
+
+
         $updown = $updown === 'up';
 
 
         $post->votes()->attach(Auth::user()->id, ['is_upvote' => $updown]);
 
-        //dd($updown);
+        dd($post->votes());
         return back();
 
     }

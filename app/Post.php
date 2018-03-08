@@ -25,6 +25,10 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'users_posts', 'post_id', 'user_id')->withPivot('is_upvote');
     }
 
+    function vote_value(){
+        
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
