@@ -30,6 +30,7 @@
     </form>
     <!-- End Votes -->
 
+    <p>Votes: {{$post->countVotes()}}</p>
     <h3>Comments</h3>
 
     @foreach($post->comments as $comment)

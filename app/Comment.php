@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\Voteable;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    use Voteable;
+
     protected $primaryKey = 'id';
     protected $table = 'comment';
 
@@ -20,6 +23,10 @@ class Comment extends Model
 
        public function post() {
         return $this->belongsTo(Post::class);
+    }
+
+    function votes() {
+        return $this->morphMany(Vote::class, 'voteable');
     }
 
     public function user() {

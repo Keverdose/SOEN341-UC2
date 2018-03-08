@@ -7,6 +7,7 @@ use App\Comment;
 use App\Category;
 //use App\User;
 
+use App\Vote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -134,16 +135,24 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     function vote(Post $post, $updown){
-
-
         $updown = $updown === 'up';
 
+        $vote = $post->votes()->where('user_id', Auth::id())->first();
 
-        $post->votes()->attach(Auth::user()->id, ['is_upvote' => $updown]);
+        if ($vote && $vote->is_upvote === $updown) {
+            $vote->delete();
+        } else if ($vote) {
+            $vote->update(['is_upvote' => $updown]);
+        } else {
+            $post->votes()->save(new Vote([
+                'user_id' => Auth::id(),
+                'is_upvote' => $updown
+            ]));
+        }
 
-        dd($post->votes());
+        //dd($post->votes->toArray());
+        //dd($post->vote_value());
         return back();
-
     }
 
 }
