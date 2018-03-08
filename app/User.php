@@ -34,12 +34,11 @@ class User extends Authenticatable
       return $this->first_name . ' ' . $this->last_name;
     }
 
-    function posts(){
+    function posts() {
         return $this->hasMany(Post::class);
     }
 
-    function votes(){
+    function votes() {
         return $this->belongsToMany(Post::class, 'users_posts', 'user_id', 'post_id')->withPivot('is_upvote');
     }
-
 }

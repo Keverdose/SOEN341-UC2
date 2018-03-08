@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    /**
+      * Fillable attributes
+      */
     protected $fillable = [
         'title', 'body'
     ];
@@ -16,12 +19,11 @@ class Post extends Model
 
     public $timestamps = true;
 
-
     function user() {
         return $this->belongsTo(User::class);
     }
 
-    function votes(){
+    function votes() {
         return $this->belongsToMany(User::class, 'users_posts', 'post_id', 'user_id')->withPivot('is_upvote');
     }
 
@@ -34,7 +36,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function content(){
+    public function content() {
         return $this->body;
     }
     public function category(){
