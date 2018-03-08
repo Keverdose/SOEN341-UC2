@@ -33,6 +33,17 @@
         @foreach($post->comments as $comment)
             <h4>{{$comment->name}} commented: </h4>
             <p>{{$comment->comment}}</p>
+            <!-- Votes for comments -->
+            <form action="{{route('comment.vote', ['comment' => $comment->id, 'vote' => 'up'])}}">
+                {{csrf_field()}}
+                <button>Upvote</button>
+            </form>
+            <form action="{{route('comment.vote', ['comment' => $comment->id, 'vote' => 'down'])}}">
+                {{csrf_field()}}
+                <button>Downvote</button>
+            </form>
+            <p>Votes: {{$comment->countVotes()}}</p>
+            <!-- End Votes -->
             <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
         @endforeach
     @endforeach
