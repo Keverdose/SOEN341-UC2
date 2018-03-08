@@ -38,7 +38,4 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    function votes() {
-        return $this->belongsToMany(Post::class, 'users_posts', 'user_id', 'post_id')->withPivot('is_upvote');
-    }
 }
