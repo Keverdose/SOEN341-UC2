@@ -18,6 +18,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/redirect/{provider}', 'SocialController@redirect')->name('social.redirect');
+Route::get('/callback/{provider}', 'SocialController@callback')->name('social.callback');
+
 Route::get('/home', 'HomeController@index');
 
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
@@ -50,7 +53,8 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/{post}', 'PostController@show')->name('post.show');
     Route::post('/create/createCategory/store', 'CategoryController@store')->name('categories.store');
     Route::get('/create/createCategory','CategoryController@createCategory')->name('categories.create');
-    //Route::get('/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)');
+    Route::get('/post/{post}/{vote}', 'PostController@vote')->where('vote', '(up|down)')->name('answer.vote');
+    Route::get('/comment/{comment}/{vote}', 'CommentController@vote')->where('vote', '(up|down)')->name('comment.vote');
 });
 
 Route::get('/{status}/posts', 'PostController@index')->name('posts.list');

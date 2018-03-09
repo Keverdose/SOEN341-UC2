@@ -60,6 +60,15 @@
                                 </a>
                             </div>
                         </div>
+                        <br />
+                        <p style="margin-left:265px">OR</p>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                              <a href="{{ route('social.redirect', ['provider' => 'facebook'])}}" class="btn btn-primary">Login with Facebook</a>
+                              <a href="{{ route('social.redirect', ['provider' => 'google'])}}" class="btn btn-primary">Login with Google+</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

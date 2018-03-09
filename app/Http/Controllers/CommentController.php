@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
 use App\Post;
+use App\Vote;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -94,5 +95,23 @@ class CommentController extends Controller
 		$comment->update($request->all());
 
         return redirect(route('post.show', ['post' => $comment->post_id]));
+    }
+
+    function vote(Comment $comment, $updown){
+        $updown = $updown === 'up';
+
+        $vote = $comment->votes()->where('user_id', Auth::id())->first();
+
+        if ($vote && $vote->is_upvote === $updown) {
+            $vote->delete();
+        } else if ($vote) {
+            $vote->update(['is_upvote' => $updown]);
+        } else {
+            $comment->votes()->save(new Vote([
+                'user_id' => Auth::id(),
+                'is_upvote' => $updown
+            ]));
+        }
+        return back();
     }
 }

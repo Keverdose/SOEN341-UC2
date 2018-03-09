@@ -7,6 +7,7 @@ use App\Comment;
 use App\Category;
 //use App\User;
 
+use App\Vote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -131,4 +132,32 @@ class PostController extends Controller
     public function delete(Post $post) {
         return view ('posts.delete', ['post' => $post]);
     }
+
+    /**
+     * Allows the user to vote on a post once.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    function vote(Post $post, $updown){
+        $updown = $updown === 'up';
+
+        $vote = $post->votes()->where('user_id', Auth::id())->first();
+
+        if ($vote && $vote->is_upvote === $updown) {
+            $vote->delete();
+        } else if ($vote) {
+            $vote->update(['is_upvote' => $updown]);
+        } else {
+            $post->votes()->save(new Vote([
+                'user_id' => Auth::id(),
+                'is_upvote' => $updown
+            ]));
+        }
+
+        //dd($post->votes->toArray());
+        //dd($post->vote_value());
+        return back();
+    }
+
 }
