@@ -27,8 +27,12 @@ class PostTest extends TestCase
         $post->setVote($user, true);
         $this->assertNotEmpty($post->votes);
 
-        $post->setVote($user, true);
+        $post->setVote($user, false);
+        $this->assertEquals($post->votes()->first()->is_upvote, false);
+
+        $post->setVote($user, false);
         $this->assertEmpty($post->votes()->get());
+
     }
 
 }
