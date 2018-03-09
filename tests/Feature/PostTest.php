@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+
 use Tests\TestCase;
 use App\Post;
 use App\User;
@@ -34,29 +35,6 @@ class PostTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('posts', ['body' => 'test body']);
-    }
-
-
-    /**
-     * Testing for login and registration
-     *
-     * @return void
-     */
-    public function test_login()
-    {
-        $user = factory(User::class)->create([
-            'first_name' => 'testfirstname',
-            'last_name' => 'testlastname',
-            'email' => 'test@example.com',
-            'password' => bcrypt('testpass123')
-        ]);
-
-        $this->visit(route('login'))
-            ->type($user->email, 'email')
-            ->type('testpass123', 'password')
-            ->press('Login')
-            ->see('Successfully logged in')
-            ->onPage('/dashboard');
     }
 
     /**
