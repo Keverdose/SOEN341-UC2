@@ -38,7 +38,7 @@
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
-                        <a href="{{route('post.show', ['post' => $post->id])}}">N/A</a>
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
                         </br>
                         Votes</span>
                 </div>
@@ -64,16 +64,6 @@
                         </span>
                 </div>
             </div>
-    <!-- Votes -->
-    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
-        {{csrf_field()}}
-        <button>Upvote</button>
-    </form>
-    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'down'])}}">
-        {{csrf_field()}}
-        <button>Downvote</button>
-    </form>
-    <!-- End Votes -->
     @endforeach
 
 </div>

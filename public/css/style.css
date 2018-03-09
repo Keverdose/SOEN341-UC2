@@ -204,3 +204,16 @@ body {
     height: 90px;
     max-width: 400px;
 }
+
+.footer-bottom {
+    background-color: goldenrod;
+    height: 3vh;
+    text-align: center;
+    margin-top: 3vh;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 3vh;
+    color: white;
+}
