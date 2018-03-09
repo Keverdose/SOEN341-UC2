@@ -18,6 +18,27 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::table('categories')->insert(
+        array(
+            'name' => 'Java'
+        )
+    );
+         DB::table('categories')->insert(
+        array(
+            'name' => 'C++'
+        )
+    );
+          DB::table('categories')->insert(
+        array(
+            'name' => 'PHP'
+        )
+    );
+           DB::table('categories')->insert(
+        array(
+            'name' => 'C#'
+        )
+    );
     }
 
     /**
