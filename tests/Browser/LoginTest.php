@@ -24,6 +24,22 @@ class LoginTest extends DuskTestCase
     }
 
     /**
+     * Testing for login with wrong credentials
+     *
+     * @test
+     */
+    public function badLogin()
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('/login')
+                ->type('email', 'unknown@example.org')
+                ->type('password', 'testpass123')
+                ->press('Login')
+                ->assertSee('These credentials do not match our records');
+        });
+    }
+
+    /**
      * Testing for login and registration
      *
      * @test
@@ -43,22 +59,6 @@ class LoginTest extends DuskTestCase
                 ->type('password', 'testpass123')
                 ->press('Login')
                 ->assertPathIs('/home');
-        });
-    }
-
-    /**
-     * Testing for login with wrong credentials
-     *
-     * @test
-     */
-    public function badLogin()
-    {
-        $this->browse(function ($browser) {
-            $browser->visit('/login')
-                ->type('email', 'unknown@example.org')
-                ->type('password', 'testpass123')
-                ->press('Login')
-                ->assertSee('These credentials do not match our records');
         });
     }
 
