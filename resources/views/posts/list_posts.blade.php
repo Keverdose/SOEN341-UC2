@@ -22,7 +22,7 @@
             $numberOfComments = count($post->comments);
             $numberOfViews = $post->view_count;
         ?>
-            <div class ="row" >
+            <div id="rowContainer1" class="row">
                 <div class="col-sm-1">
                     <span class = "nb-of-Comments-Block "style=   " overflow: auto;
                           WIDTH: 100%;
@@ -63,7 +63,9 @@
                     <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
                         </span>
                 </div>
+
             </div>
+
     @endforeach
 
 </div>

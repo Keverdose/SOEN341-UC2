@@ -23,7 +23,8 @@
             $numberOfViews = $post->view_count;
             ?>
 
-                <div class ="row" >
+
+                <div id="rowContainer1" class ="row" >
                     <div class="col-sm-1">
                     <span class = "nb-of-Comments-Block "style=   " overflow: auto;
                           WIDTH: 100%;
@@ -78,7 +79,8 @@
 
     @foreach($comments as $comment)
 
-                    <div class ="row" >
+
+                    <div div id="rowContainer1" class ="row" >
 
 
                     <div class="col-sm-5">
@@ -104,6 +106,9 @@
                     </div>
 
                     </div>
+
+
+
     @endforeach
 
 </div>

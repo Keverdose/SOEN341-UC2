@@ -117,7 +117,7 @@ body {
     }
 }
 
-.row {
+#rowContainer1 {
 
     border-top: 1px solid darkred;
     width: 100%;
@@ -127,7 +127,7 @@ body {
 
 }
 
-.row:hover {
+#rowContainer1.row:hover {
     background-color: whitesmoke;
 
 }
