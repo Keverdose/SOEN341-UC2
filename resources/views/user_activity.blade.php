@@ -39,7 +39,7 @@
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
-                        <a href="{{route('post.show', ['post' => $post->id])}}">N/A</a>
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
                         </br>
                         Votes</span>
                     </div>
