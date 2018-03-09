@@ -14,7 +14,7 @@ before_script:
   - composer self-update
   - composer install --no-interaction
   - php artisan migrate --seed
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=8000 http://localhost &
   - php artisan serve &
 
 script:
