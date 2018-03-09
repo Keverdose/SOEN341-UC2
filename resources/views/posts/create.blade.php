@@ -7,13 +7,13 @@
 
         <div class="form-group">
             <label for="">Title</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" required>
         </div>
 
         <div class="form-group">
             <label for="">Category</label>
             @if($categories->count() != 0)
-            <select class="form-control" name="Category">
+            <select class="form-control" name="Category" required>
                 @foreach($categories as $category)
                 <option name ="category_id" value={{$category->id}}>{{$category->name}}</option>
                 @endforeach
@@ -26,7 +26,7 @@
         <br>
         <div class="form-group">
             <label for="">Description</label>
-            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="body" id="" cols="30" rows="10" class="form-control" required></textarea>
         </div>
 
         <button class="btn btn-primary" type="submit">Create Post</button>
