@@ -110,3 +110,16 @@ body {
     margin-top: 3vh;
     color: white;
 }
+
+.welcome-message{
+    font-style: normal;
+    color: darkred;
+    font-weight: 200;
+    font-size: 15pt;
+}
+
+.welcome-message>p{
+        font-weight:300;
+
+
+}

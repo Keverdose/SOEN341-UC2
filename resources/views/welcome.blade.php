@@ -24,20 +24,23 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md">
-                Welcome to StackUnderflow
-            </div>
+            <div class="welcome-message col-sm-5" >
+                @auth
+                <h2><b>Welcome user name, get answers to questions you didn't know you had.</b></h2>
+                <p>StackUnderflow provides modivated web designers with a platform to share their
+                  knowledge and experience.</p>
 
-            <div class="links">
-                <a href="{{ url('/post/create') }}">Create a Post</a>
-                <a href="{{ route('posts.list', ['status' => 'open'])}}">Current Posts</a>
-                <a href="{{ route('posts.list', ['status' => 'solved'])}}">Solved Posts</a>
-                <a href="{{ route('user.activity', ['user_id' => Auth::id()])}}">My Activity</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
-            </div>
-        </div>
-    </div>
-</body>
+
+                  @else
+                  <h2><b>Welcome, get answers to questions you didn't know you had.</b></h2>
+                  <p>StackUnderflow provides modivated web designers with a platform to share their
+                    knowledge and experience.</p>
+
+                  </br><a href= '{{ route('register') }}'><button class = "btn btn-conu">
+                    Register Here</button></a>
+
+                  <p class = "links"><a href= '{{ route('login') }}'> login </a></p>
+                  @endauth
 
 </html>
 @endsection
