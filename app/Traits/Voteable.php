@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\User;
 use App\Vote;
 
 trait Voteable
@@ -17,6 +18,21 @@ trait Voteable
             $vote->is_upvote ? $count++ : $count--;
         }
         return $count;
+    }
+
+    public function setVote(User $user, $updown) {
+        $vote = $this->votes()->where('user_id', $user->id)->first();
+
+        if ($vote && $vote->is_upvote == $updown) {
+            $vote->delete();
+        } else if ($vote) {
+            $vote->update(['is_upvote' => $updown]);
+        } else {
+            $this->votes()->save(new Vote([
+                'user_id' => $user->id,
+                'is_upvote' => $updown
+            ]));
+        }
     }
 
 }

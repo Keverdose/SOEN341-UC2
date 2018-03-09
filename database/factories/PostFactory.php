@@ -18,5 +18,7 @@ $factory->define(App\Post::class, function (Faker $faker) use ($factory) {
         'user_id' => $factory->create(App\User::class)->id,
         'title' => str_random(10),
         'body' => str_random(20),
+        'category_id' => 1,
+        'solved' => false
     ];
 });
