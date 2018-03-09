@@ -41,6 +41,10 @@
 
                   <p class = "links"><a href= '{{ route('login') }}'> login </a></p>
                   @endauth
+                </div>
+              </div>
+            </div>
+          </body>
 
 </html>
 @endsection
