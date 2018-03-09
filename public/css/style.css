@@ -98,6 +98,113 @@ body {
     border-color: goldenrod;
 }
 
+.container{
+
+    overflow: hidden;
+
+}
+
+@keyframes slide-left {
+
+    from{
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to{
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+#rowContainer1 {
+
+    border-top: 1px solid darkred;
+    width: 100%;
+    animation: slide-left 1.2s;
+    -webkit-animation-timing-function: ease-in-out;
+    transform: translateZ(0);
+
+}
+
+#rowContainer1.row:hover {
+    background-color: whitesmoke;
+
+}
+
+.postsTitle{
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+    overflow: hidden;
+    height: 70px;
+}
+
+.titleLink{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 40px;
+    font-size: 13pt;
+}
+
+.postsTitle>p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 30px;
+    font-size: 8.5pt;
+
+}
+
+.col-sm-1>span{
+    font-size: 8.5pt;
+}
+
+.col-sm-1>span>a{
+
+    overflow-x: hidden;
+    font-size: 14pt;
+}
+
+.col-sm-9>span>a{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden
+}
+
+.col-sm-9>span>p{
+    font-size: 8.5pt;
+}
+
+.col-sm-9{
+    overflow: hidden;
+    height: 55px;
+    font-size: 12.5pt;
+
+}
+
+.titleOfComment{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 400px;
+    display: block;
+    overflow: hidden;
+    height: 25px;
+    font-size: 12.5pt;
+
+}
+
+.commentContent{
+
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    height: 90px;
+    max-width: 400px;
+}
+
 .footer-bottom {
     background-color: goldenrod;
     height: 3vh;

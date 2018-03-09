@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('body');
+            $table->integer('view_count')->default(0);
             $table->integer('category_id')->unsigned();
             $table->boolean('solved');
             $table->timestamps();

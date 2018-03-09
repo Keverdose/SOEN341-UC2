@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+    <!-- Styles -->
+
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+
+    <div class="container">
     @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
@@ -12,40 +18,55 @@
     </br>
 
     @foreach($posts as $post)
-    <h3><a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a></h3>
-    <p>{{ $post->body }}</p>
-    <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
+        <?php
+            $numberOfComments = count($post->comments);
+            $numberOfViews = $post->view_count;
+        ?>
+            <div id="rowContainer1" class="row">
+                <div class="col-sm-1">
+                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
+                        </br>
+                    Comments</span>
+                </div>
 
-    <!-- Votes -->
-    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
-        {{csrf_field()}}
-        <button>Upvote</button>
-    </form>
-    <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'down'])}}">
-        {{csrf_field()}}
-        <button>Downvote</button>
-    </form>
-    <!-- End Votes -->
+                <div class="col-sm-1">
+                    <span style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
+                        </br>
+                        Votes</span>
+                </div>
 
+                <div class="col-sm-1">
+                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
+                        </br>
+                        Views</span>
+                </div>
 
-    <h3>Comments</h3>
+                <div class="col-sm-9" >
+                    <span style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
 
-        @foreach($post->comments as $comment)
-            <h4>{{$comment->name}} commented: </h4>
-            <p>{{$comment->comment}}</p>
-            <!-- Votes for comments -->
-            <form action="{{route('comment.vote', ['comment' => $comment->id, 'vote' => 'up'])}}">
-                {{csrf_field()}}
-                <button>Upvote</button>
-            </form>
-            <form action="{{route('comment.vote', ['comment' => $comment->id, 'vote' => 'down'])}}">
-                {{csrf_field()}}
-                <button>Downvote</button>
-            </form>
-            <p>Votes: {{$comment->countVotes()}}</p>
-            <!-- End Votes -->
-            <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
-        @endforeach
+                    <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
+                    <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
+                        </span>
+                </div>
+
+            </div>
+
     @endforeach
+
 </div>
 @endsection
