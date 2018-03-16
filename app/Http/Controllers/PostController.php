@@ -62,6 +62,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post) {
+        $id = $post->increment('view_count');
+        $array = [
+            "view_count" => $id,];
+
+        $post->update($array);
         return view('posts.show', ['post' => $post]);
     }
 
@@ -135,23 +140,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     function vote(Post $post, $updown){
-        $updown = $updown === 'up';
 
-        $vote = $post->votes()->where('user_id', Auth::id())->first();
+        $post->setVote(Auth::user(), $updown === 'up');
 
-        if ($vote && $vote->is_upvote === $updown) {
-            $vote->delete();
-        } else if ($vote) {
-            $vote->update(['is_upvote' => $updown]);
-        } else {
-            $post->votes()->save(new Vote([
-                'user_id' => Auth::id(),
-                'is_upvote' => $updown
-            ]));
-        }
-
-        //dd($post->votes->toArray());
-        //dd($post->vote_value());
         return back();
     }
 
