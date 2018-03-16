@@ -1,10 +1,8 @@
 html,
 body {
     background-color: #fff;
-
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-
     margin: 0;
 }
 
@@ -30,6 +28,12 @@ body {
     position: absolute;
     right: 10px;
     top: 18px;
+}
+
+.top-middle {
+    position: absolute;
+    right: 550px;
+    top: 10px;
 }
 
 .content {
@@ -98,91 +102,81 @@ body {
     border-color: goldenrod;
 }
 
-.container{
-
+.container {
     overflow: hidden;
-
 }
 
 @keyframes slide-left {
-
-    from{
+    from {
         margin-left: 100%;
         width: 300%;
     }
-
-    to{
+    to {
         margin-left: 0%;
         width: 100%;
     }
 }
 
 #rowContainer1 {
-
     border-top: 1px solid darkred;
     width: 100%;
     animation: slide-left 1.2s;
     -webkit-animation-timing-function: ease-in-out;
     transform: translateZ(0);
-
 }
 
 #rowContainer1.row:hover {
     background-color: whitesmoke;
-
 }
 
-.postsTitle{
+.postsTitle {
     text-overflow: ellipsis;
     margin-bottom: 0px;
     overflow: hidden;
     height: 70px;
 }
 
-.titleLink{
+.titleLink {
     text-overflow: ellipsis;
     overflow: hidden;
     height: 40px;
     font-size: 13pt;
 }
 
-.postsTitle>p{
+.postsTitle>p {
     text-overflow: ellipsis;
     overflow: hidden;
     height: 30px;
     font-size: 8.5pt;
-
 }
 
-.col-sm-1>span{
+.col-sm-1>span {
     font-size: 8.5pt;
 }
 
-.col-sm-1>span>a{
-
+.col-sm-1>span>a {
     overflow-x: hidden;
     font-size: 14pt;
 }
 
-.col-sm-9>span>a{
+.col-sm-9>span>a {
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block;
     overflow: hidden
 }
 
-.col-sm-9>span>p{
+.col-sm-9>span>p {
     font-size: 8.5pt;
 }
 
-.col-sm-9{
+.col-sm-9 {
     overflow: hidden;
     height: 55px;
     font-size: 12.5pt;
-
 }
 
-.titleOfComment{
+.titleOfComment {
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 400px;
@@ -190,11 +184,9 @@ body {
     overflow: hidden;
     height: 25px;
     font-size: 12.5pt;
-
 }
 
-.commentContent{
-
+.commentContent {
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,15 +210,13 @@ body {
     color: white;
 }
 
-.welcome-message{
+.welcome-message {
     font-style: normal;
     color: darkred;
     font-weight: 200;
     font-size: 15pt;
 }
 
-.welcome-message>p{
-        font-weight:300;
-
-
+.welcome-message>p {
+    font-weight: 300;
 }
