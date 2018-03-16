@@ -32,10 +32,11 @@ Route::post('comment/{comment}/destroyed', 'CommentController@destroy')->name('c
 Route::post('post/{post}/deleted', 'PostController@delete')->name('post.delete');
 Route::post('post/{post}/destroyed', 'PostController@destroy')->name('post.destroy');
 
-
 Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
 
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
+    Route::get('/query', 'PostController@search')->name('post.search');
+
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
     
