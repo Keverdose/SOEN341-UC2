@@ -24,9 +24,9 @@
         @endif
 
         <div class="content">
-            <div class="welcome-message col-sm-5" >
+            <div class="welcome-message col-sm-4" >
                 @auth
-                <h2><b>Welcome user name, get answers to questions you didn't know you had.</b></h2>
+                <h2><b>Welcome {{Auth::user()->fullName()}}, get answers to questions you didn't know you had.</b></h2>
                 <p>StackUnderflow provides modivated web designers with a platform to share their
                   knowledge and experience.</p>
 
@@ -41,6 +41,14 @@
 
                   <p class = "links"><a href= '{{ route('login') }}'> login </a></p>
                   @endauth
+                </div>
+
+                <div class= "col-sm-2"></div>
+                <div class="col-sm-4">
+                  <img src="http://www.bluebison.net/sketchbook/2006/0506/monkey_snake_swimming.jpg"
+                  class="image_water" alt="waterfall">
+                </div>
+                
                 </div>
               </div>
             </div>

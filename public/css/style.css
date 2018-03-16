@@ -116,10 +116,20 @@ body {
     color: darkred;
     font-weight: 200;
     font-size: 15pt;
+    margin-left: 80px;
+    position: relative;
 }
 
 .welcome-message>p{
         font-weight:300;
 
 
+}
+
+.image_water{
+  width : 500px;
+  height:285px;
+  margin-right:80px;
+  border: 10px solid;
+  border-style: ridge;
 }
