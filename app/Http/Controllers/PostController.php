@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use App\Category;
+use App\Tag;
+
 //use App\User;
 
 use App\Vote;
@@ -35,7 +37,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create',['categories' => Category::all()]);
+        return view('posts.create',['categories' => Category::all(),'tags'=>Tag::All()]);
     }
 
     /**
@@ -48,8 +50,22 @@ class PostController extends Controller
         $post = new Post($request->all());
         $post->category_id = $request->get('Category');
         $post->solved=FALSE;
-
+        $tags = Tag::All()->pluck('name')->toArray();
+        $tag_list = $request->get('tags');
+        $newTagAdded = [];
         Auth::user()->posts()->save($post);
+        foreach ($tag_list as $tag) {
+           if(!(in_array($tag,$tags))){
+                        $newTag = new Tag();
+                        $newTag->name = $tag;
+                        $newTag->save();
+                        
+                }
+                array_push($newTagAdded,Tag::where('name' , '=', $tag)->first()->id);
+
+            }
+            
+        $post->tags()->sync($newTagAdded,false);
         $request->session()->flash('success', 'Post creation was successful!');
 
         return redirect(route('post.show', ['post' => $post->id]));
@@ -117,9 +133,8 @@ class PostController extends Controller
      */
     public function destroy($id) {
         $post = Post::find($id);
-        $comments = $post->comments;
+        $post->tags()->detach();
         $post->delete();
-
         return view('posts.list_posts', ['posts' => Post::all()]);        
     }
 

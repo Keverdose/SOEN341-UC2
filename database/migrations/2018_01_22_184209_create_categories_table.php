@@ -39,6 +39,16 @@ class CreateCategoriesTable extends Migration
             'name' => 'C#'
         )
     );
+            DB::table('categories')->insert(
+        array(
+            'name' => 'Laravel'
+        )
+    );
+             DB::table('categories')->insert(
+        array(
+            'name' => 'JQuery'
+        )
+    );
     }
 
     /**
