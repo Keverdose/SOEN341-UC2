@@ -54,16 +54,18 @@ class PostController extends Controller
         $tag_list = $request->get('tags');
         $newTagAdded = [];
         Auth::user()->posts()->save($post);
-        foreach ($tag_list as $tag) {
-           if(!(in_array($tag,$tags))){
-                        $newTag = new Tag();
-                        $newTag->name = $tag;
-                        $newTag->save();
-                        
+        if(count($tag_list) > 0) {
+            foreach ($tag_list as $tag) {
+                if (!(in_array($tag, $tags))) {
+                    $newTag = new Tag();
+                    $newTag->name = $tag;
+                    $newTag->save();
+
                 }
-                array_push($newTagAdded,Tag::where('name' , '=', $tag)->first()->id);
+                array_push($newTagAdded, Tag::where('name', '=', $tag)->first()->id);
 
             }
+        }
             
         $post->tags()->sync($newTagAdded,false);
         $request->session()->flash('success', 'Post creation was successful!');
