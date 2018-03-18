@@ -62,7 +62,10 @@
                           text-align: center;">
 
                     <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
-                    <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
+                     @foreach($post->tags as $tag)
+                      <label class ="tags">{{$tag->name}}</label>
+                    @endforeach
+                    <label>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</label>
                         </span>
                     </div>
                 </div>
