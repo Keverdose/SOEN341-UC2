@@ -13,7 +13,7 @@ class UserTest extends TestCase
 {
     use DatabaseMigrations;
     /**
-     * A basic test example.
+     * A basic test for the user.
      *
      * @return void
      */

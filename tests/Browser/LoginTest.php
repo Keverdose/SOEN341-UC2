@@ -12,19 +12,6 @@ class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
     /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('StackUnderflow');
-        });
-    }
-
-    /**
      * Testing for login with wrong credentials
      *
      * @test
