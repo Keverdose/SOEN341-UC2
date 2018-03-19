@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading"><label>Login</label></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -51,14 +51,26 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-conu">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                <a class="links" href="{{ route('password.request') }}"
+                                style="margin-left:15px; color:black">
+                                      Forgot Your Password?
                                 </a>
                             </div>
+                        </div>
+
+                        <p style="margin-left:265px">OR</p>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+
+                              <a href="{{ route('social.redirect', ['provider' => 'facebook'])}}" class="btn btn-conu">Login with Facebook</a>
+                              <a href="{{ route('social.redirect', ['provider' => 'google'])}}" class="btn btn-conu"
+                                style="margin-left:15px">Login with Google+</a>
+         </div>
                         </div>
                     </form>
                 </div>

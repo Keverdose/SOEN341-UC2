@@ -24,20 +24,35 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md">
-                Welcome to StackUnderflow
-            </div>
+            <div class="welcome-message col-sm-4" >
+                @auth
+                <h2><b>Welcome {{Auth::user()->fullName()}}, get answers to questions you didn't know you had.</b></h2>
+                <p>StackUnderflow provides modivated web designers with a platform to share their
+                  knowledge and experience.</p>
 
-            <div class="links">
-                <a href="{{ url('/post/create') }}">Create a Post</a>
-                <a href="{{ route('posts.list', ['status' => 'open'])}}">Current Posts</a>
-                <a href="{{ route('posts.list', ['status' => 'solved'])}}">Solved Posts</a>
-                <a href="{{ route('user.activity', ['user_id' => Auth::id()])}}">My Activity</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+
+                  @else
+                  <h2><b>Welcome, get answers to questions you didn't know you had.</b></h2>
+                  <p>StackUnderflow provides modivated web designers with a platform to share their
+                    knowledge and experience.</p>
+
+                  </br><a href= '{{ route('register') }}'><button class = "btn btn-conu">
+                    Register Here</button></a>
+
+                  <p class = "links"><a href= '{{ route('login') }}'> login </a></p>
+                  @endauth
+                </div>
+
+                <div class= "col-sm-2"></div>
+                <div class="col-sm-4">
+                  <img src="http://www.bluebison.net/sketchbook/2006/0506/monkey_snake_swimming.jpg"
+                  class="image_water" alt="waterfall">
+                </div>
+                
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-</body>
+          </body>
 
 </html>
 @endsection

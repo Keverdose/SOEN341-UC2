@@ -102,4 +102,11 @@ class CommentController extends Controller
 
         return redirect(route('post.show', ['post' => $comment->post_id]));
     }
+
+    function vote(Comment $comment, $updown){
+
+        $comment->setVote(Auth::user(), $updown === 'up');
+
+        return back();
+    }
 }

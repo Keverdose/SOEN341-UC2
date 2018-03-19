@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\Voteable;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use Voteable;
     /**
       * Fillable attributes
       */
@@ -23,11 +25,9 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    function votes() {
-        return $this->belongsToMany(User::class, 'users_posts', 'post_id', 'user_id')->withPivot('is_upvote');
-    }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
@@ -38,4 +38,8 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+     
+    function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }

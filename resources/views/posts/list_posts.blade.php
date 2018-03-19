@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+    <!-- Styles -->
+
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+
+    <div class="container">
     @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
@@ -16,6 +22,7 @@
 
 
     @foreach($posts as $post)
+
     <h3><a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a></h3>
     <p>{{ $post->body }}</p>
     <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
@@ -32,6 +39,60 @@
             <p>{{$comment->comment}}</p>
             <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
         @endforeach
+
+        <?php
+            $numberOfComments = count($post->comments);
+            $numberOfViews = $post->view_count;
+        ?>
+            <div id="rowContainer1" class="row">
+                <div class="col-sm-1">
+                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
+                        </br>
+                    Comments</span>
+                </div>
+
+                <div class="col-sm-1">
+                    <span style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
+                        </br>
+                        Votes</span>
+                </div>
+
+                <div class="col-sm-1">
+                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
+                        </br>
+                        Views</span>
+                </div>
+
+                <div class="col-sm-9" >
+                    <span style=   " overflow: auto;
+                          WIDTH: 100%;
+                          display: block;
+                          text-align: center;">
+
+                    <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
+                    @foreach($post->tags as $tag)
+                      <label class ="tags">{{$tag->name}}</label>
+                    @endforeach
+                    <label>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</label>
+                        </span>
+                </div>
+
+            </div>
+
+
     @endforeach
+
 </div>
 @endsection
