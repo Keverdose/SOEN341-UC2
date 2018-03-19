@@ -27,13 +27,13 @@ body {
 .top-right {
     position: absolute;
     right: 10px;
-    top: 18px;
+    top: 15px;
 }
 
 .top-middle {
     position: absolute;
-    right: 550px;
-    top: 10px;
+    right: 650px;
+    top: 8px;
 }
 
 .content {
@@ -57,13 +57,13 @@ body {
 
 .linkstwo>a {
     color: white;
-    padding: 14px 15px;
+    padding: 12px 15px;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 12px;
-    line-height: 22px;
-    height: 50px
+    line-height: 18px;
+    height: 40px
 }
 
 .m-b-md {
