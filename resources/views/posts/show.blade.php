@@ -1,5 +1,6 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.single_post') 
 
+@section('content')
 <div class="container ">
     <div><small>By {{ $post->user->fullName() }}</small></div>
     <h1 class="post-title">{{ $post->title }}</h1>
@@ -101,3 +102,9 @@
 
 @endsection
 
+@section('related')
+    @foreach($related as $post)
+    <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
+    </br>
+    @endforeach
+@endsection

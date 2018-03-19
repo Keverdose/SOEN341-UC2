@@ -81,11 +81,9 @@ class PostController extends Controller
      */
     public function show(Post $post) {
         $id = $post->increment('view_count');
-        $array = [
-            "view_count" => $id,];
-
-        $post->update($array);
-        return view('posts.show', ['post' => $post]);
+        $related = Post::all()->whereIn('category_id', $post->category_id)
+                                ->whereNotIn('id', $post->id);
+        return view('posts.show', ['post' => $post, 'related' => $related]);
     }
 
     /**
