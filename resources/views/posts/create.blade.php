@@ -7,11 +7,11 @@
 
         <div class="form-group">
             <label for="" class="function-sub">Title</label>
-            <input type="text" class="form-control" name="title" required>
+            <input type="text" class="form-control form--width" name="title" required>
         </div>
         <div class="form-group">
             <label for="tags" class="function-sub">Tags</label>
-            <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+            <select class="form-control select2-multi form--width" name="tags[]" multiple="multiple">
             @foreach($tags as $tag)
             <option value="{{$tag->name}}">{{$tag->name}}</option>
             @endforeach
@@ -21,9 +21,9 @@
 
 
 
-        <div class="form-group">
+        <div class="form-group form--width">
             <label for="" class="function-sub">Category</label> @if($categories->count() != 0)
-            <select class="form-control" name="Category" required>
+            <select class="form-control " name="Category" required>
                 @foreach($categories as $category)
                 <option name ="category_id" value={{$category->id}}>{{$category->name}}</option>
                 @endforeach
