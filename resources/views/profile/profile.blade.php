@@ -1,94 +1,53 @@
-@extends('layouts.app') 
+@extends('layouts.app')
+<style type = "text/css">
+    .picture{
+            border-radius: 150%;
+            width:150px;
+            height:150px;}
+    
+    .group{ position: relative;left: 10%;
+          font-family: "Times New Roman", Times, serif;;}
 
+    .user_info{position: relative;left: 10%;
+                font: italic bold 12px/30px Georgia, serif}
+
+    #user_name{ font-size: large;}
+
+    #profile{font-size: large;
+            }
+</style>
 @section('content')
 
-<div class ="container">
-   <div class = "row">
-     <div class = "col-md-8 col-md-offset-2">
-
-        @if(count($errors)>0)
-          @foreach($errors->all() as $error)
-            <div class = "alert alert-danger">{{$error}}</div>
-          @endforeach
-        @endif
-        @if(session('response'))
-           <div class ="alert alert-success"> {{session('response')}} </div>
-        @endif
-
-     	 <div class = "panel panel-default">
-     	 	 <div class = "panel-heading">Profile</div>
-                <div class = "panel-body">
-     	 	 
-  
-
-
-                     <form class="form-horizontal" method="POST" action="{{ route('addProfile') }}"enctype = "multipart/form-data">
-                        {{ csrf_field() }}
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
 
 
 
 
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">Title</label>
-
-                            <div class="col-md-6">
-                                <input id="title" type="input" class="form-control" name="title" required>
-
-                                @if ($errors->has('title'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                  <div class= "group">
+                   @if(!empty($user->profile_pic))
+                        <img src ="{{$user->profile_pic}}" class = "picture" alt="" style="float:left">
+                        @else
+                        <img src ="{{url('images/avatar.jpg')}}" class = "picture" alt="" style= "float:right">
+                   @endif
 
 
 
-
-                         <div class="form-group{{ $errors->has('profile_pic') ? ' has-error' : '' }}">
-                            <label for="profile_pic" class="col-md-4 control-label">Profile picture</label>
-                              <div class="col-md-6">
-                                <input id="profile_pic" type="file" class="form-control" name="profile_pic" required>
-
-                                @if ($errors->has('profile_pic'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('profile_pic') }}</strong>
-                                    </span>
-                                @endif
-                             </div>
-                         </div>
-               
-
-                        <div class = "form-group">
-                          <div class = "col-md-8 col-md-offset-4">
-                            <button type = "submit" class ="btn btn-primary">Submit</button>
-                         </div>
-                       </div>
-                    </form>
-     	 
-     	       </div>
-         </div>
-    </div>
-  </div>
-</div>
+              
+                   <ul class = user_info style="list-style-type:none">
+                    <li id = user_name>{{$user->user_name}}</li>
+                    <li id = title>{{$user->title}}</li>
+                    <li>Member since: {{$time}}</li>
+                    <li>{{$user->view_count}} profile view</li>
+                    @if($user->id == Auth::user()->id)
+                    <li><a href= "{{ route('editProfile') }}" id= profile>Edit Profile</a></li>
+                    @endif
+                   </ul>
+                 </div>
 
 
-<html lang="{{ app()->getLocale() }}">
+                   
+                </div>
+            </div>
+        </div>
+
 @endsection

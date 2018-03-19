@@ -20,10 +20,18 @@
     <h3>Comments</h3>
 
     @foreach($post->comments as $comment)
-    <h4>{{$comment->name}} commented: </h4>
-    <p>{{$comment->comment}}</p>
-    <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
 
+        @if($comment->user_name != null)
+            <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">
+                           {{$comment->user_name}}</a></h4>
+        @else
+            <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">
+                           {{$comment->name}}</a> </h4>
+        @endif
+  
+        <p>{{$comment->comment}}</p>
+        <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
+ 
         @if(Auth::id()==$comment->user_id)
             <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Edit</a>
             <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn btn-xs btn-info pull-left">Delete</a>

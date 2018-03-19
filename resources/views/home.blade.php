@@ -1,8 +1,8 @@
 @extends('layouts.app')
 <style type = "text/css">
     .avatar{
-            border-radius: 100%;
-            max-width:100px;
+            border-radius: 50%;
+            max-width:50px;
             }
 </style>
 @section('content')
@@ -30,8 +30,8 @@
 
                 <div class="panel-body">
                     <div class ="col-md-4">
-                        @if(!empty($profile))
-                        <img src ="{{$profile->profile_pic}}" class = "avatar" alt="">
+                        @if(!empty($user->profile_pic))
+                        <img src ="{{$user->profile_pic}}" class = "avatar" alt="">
                         @else
                         <img src ="{{url('images/avatar.jpg')}}" class = "avatar" alt="">
                         @endif

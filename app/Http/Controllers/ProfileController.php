@@ -2,55 +2,85 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-use App\Profile;
+use Carbon\Carbon;
 use Auth;
+use App\User;
+use App\Comment;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
 
-
 class ProfileController extends Controller
 {
-    public function profile(){
-    	return view('profile.profile');
+
+
+    public function profile(User $profile)
+    {
+
+
+       
+        
+        if($profile->id != Auth::user()->id)
+            $profile->increment('view_count');
+
+         $clientCreation = $profile->created_at;
+         $time =Carbon::createFromTimeStamp(strtotime($clientCreation))->diffForHumans();
+         return view('profile.profile')->with('time',$time)->with('user',$profile); 
+    
     }
 
+
+
+    public function editProfile(){
+         return view('profile.profile_edit');
+    }
+
+
+
+
+
     public function addProfile(Request $request){
+
     	$this ->validate($request,[
-    		'name' => 'required',
+          /*'user_name'=> 'required',
     	  'title' => 'required',
-    	  'profile_pic' => 'required',
+    	  'profile_pic' => 'required'*/
     	]);
 
-    	$profiles = new Profile;
-      $profiles ->user_id = Auth::user()->id;
-    	$profiles ->name = $request->input('name');
+
+        
+    	$profiles = User::find(Auth::user()->id);
+        if(!empty($request->input('user_name')))
+    	$profiles ->user_name = $request->input('user_name');
+        if(!empty($request->input('title')))
     	$profiles ->title = $request->input('title');
     	if(Input::hasFile('profile_pic'))
     		{
     	 $file = Input::file('profile_pic');
-    	 $file->move(public_path().'/uploads/',$profiles->user_id.'.'.$file->getClientOriginalExtension()); 
-    	 $url =URL::to("/").'/uploads/'.$profiles->user_id.'.'.$file->getClientOriginalExtension();
-    	    }
-            $profiles ->profile_pic = $url;
+    	 $file->move(public_path().'/uploads/',$profiles->id.'.'.$file->
+                getClientOriginalExtension());                 
+         $url  = URL::to("/").'/uploads/'.$profiles->id.'.'.$file->
+                getClientOriginalExtension();
+         $profiles ->profile_pic = $url;
+    	  }
+         
+
+        $profiles->save();
+        $userName = DB::table('users')->where('id',Auth::user()->id)->first();
+        $comments = DB::table('comment')->where('user_id',Auth::user()->id)->update(['user_name' => $userName->user_name]);
+      
 
 
-       $profileCheck = Profile::find($profiles->user_id);
-       if($profileCheck!=null){
-           $profileCheck ->name = $profiles -> name;
-           $profileCheck ->title = $profiles -> title;
-           $profileCheck ->profile_pic= $profiles -> profile_pic;
-           $profileCheck ->save();
-           return redirect('/home')->
-           with('response', 'profile was succesfully updated');
+       if($profiles->user_name!=null)
+         {
+           return redirect('/home')->with('response', 'profile was succesfully updated');
          }
-        else{
-    	$profiles -> save();
-    	return redirect('/home')->
-    	with('response','Profile Added Successfully');
-        }
+       else
+         {
+    	     return redirect('/home')->with('response','Profile Added Successfully');
+         }
 
-       }
+    }
 }

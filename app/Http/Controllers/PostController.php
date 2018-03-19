@@ -10,6 +10,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -19,6 +20,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($status) {
+
+  
+
         if ( $status == 'open') {
             return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
         }
