@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('content')
 
-@section('content')
+<!-- Styles -->
 
-    <!-- Styles -->
-
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 <div class="container">
     @if (session('status'))
@@ -13,50 +11,50 @@
     </div>
     @endif
 
-    <h2>{{Auth::user()->fullName()}} Posts</h2>
+    <h2 class="function-title">{{Auth::user()->fullName()}} Posts</h2>
     </br>
 
     @foreach($posts as $post)
 
-            <?php
+    <?php
             $numberOfComments = count($post->comments);
             $numberOfViews = $post->view_count;
             ?>
 
 
-                <div id="rowContainer1" class ="row" >
-                    <div class="col-sm-1">
-                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+        <div id="rowContainer1" class="row">
+            <div class="col-sm-1">
+                <span class="nb-of-Comments-Block " style=" overflow: auto;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
                         <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
                         </br>
                         Comments</span>
-                    </div>
+            </div>
 
-                    <div class="col-sm-1">
-                    <span style=   " overflow: auto;
+            <div class="col-sm-1">
+                <span style=" overflow: auto;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
                         <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
                         </br>
                         Votes</span>
-                    </div>
+            </div>
 
-                    <div class="col-sm-1">
-                    <span class = "nb-of-Comments-Block "style=   " text-overflow: ellipsis;
+            <div class="col-sm-1">
+                <span class="nb-of-Comments-Block " style=" text-overflow: ellipsis;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
                         <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
                         </br>
                         Views</span>
-                    </div>
+            </div>
 
-                    <div class="col-sm-9" >
-                    <span style=   " overflow: auto;
+            <div class="col-sm-9">
+                <span style=" overflow: auto;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
@@ -67,8 +65,8 @@
                     @endforeach
                     <label>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</label>
                         </span>
-                    </div>
-                </div>
+            </div>
+        </div>
 
 
 
@@ -76,18 +74,18 @@
 
 
 
-    </br>
-    <h2>{{Auth::user()->fullName()}} Comments</h2>
-    </br>
+        </br>
+        <h2 class="function-title">{{Auth::user()->fullName()}} Comments</h2>
+        </br>
 
-    @foreach($comments as $comment)
-
-
-                    <div div id="rowContainer1" class ="row" >
+        @foreach($comments as $comment)
 
 
-                    <div class="col-sm-5">
-                    <span class = "My-Comments "style=   " overflow: auto;
+        <div div id="rowContainer1" class="row">
+
+
+            <div class="col-sm-5">
+                <span class="My-Comments " style=" overflow: auto;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
@@ -95,10 +93,10 @@
                         <div class="commentContent">{{ $comment->comment }}</div>
 
                         </span>
-                    </div>
+            </div>
 
-                    <div class="col-sm-7" >
-                    <span style=   " overflow: auto;
+            <div class="col-sm-7">
+                <span style=" overflow: auto;
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
@@ -106,13 +104,13 @@
 
                     <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
                         </span>
-                    </div>
+            </div>
 
-                    </div>
+        </div>
 
 
 
-    @endforeach
+        @endforeach
 
 </div>
 
