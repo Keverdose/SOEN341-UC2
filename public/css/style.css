@@ -30,12 +30,6 @@ body {
     top: 15px;
 }
 
-.top-middle {
-    position: absolute;
-    right: 650px;
-    top: 8px;
-}
-
 .content {
     text-align: center;
 }
@@ -219,4 +213,30 @@ body {
 
 .welcome-message>p {
     font-weight: 300;
+}
+
+.top-middle {
+    position: absolute;
+    right: 620px;
+    top: 8px;
+}
+
+input[type=search] {
+    border: solid 3px darkred;
+    width: 100px !important;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=search]:focus {
+    width: 180px !important;
+    background-color: #fff;
+    border-color: goldenrod;
+    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
