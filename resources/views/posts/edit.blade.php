@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.app') @section('content')
 
 <div class="container">
     <div><small>By {{ $post->user->fullName() }}</small></div>
@@ -11,11 +9,11 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="">Edit Issue</label>
+                <label for="" class="function-title">Edit Issue</label>
                 <textarea name="body" id="" cols="30" rows="10" class="form-control">{{$post->body}}</textarea>
             </div>
-            
-            <button class="btn btn-primary" type="submit">Update</button>
+
+            <button class="btn btn-conu" type="submit">Update</button>
         </form>
     </div>
 
