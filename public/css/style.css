@@ -223,7 +223,7 @@ body {
 
 input[type=search] {
     border: solid 3px darkred;
-    width: 100px !important;
+    width: 175px !important;
     -webkit-border-radius: 10em;
     -moz-border-radius: 10em;
     border-radius: 10em;
@@ -233,7 +233,7 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-    width: 180px !important;
+    width: 400px !important;
     background-color: #fff;
     border-color: goldenrod;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
