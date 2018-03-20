@@ -15,6 +15,31 @@
     <h2 class="function-title">Currently Open Posts</h2>
     </br>
 
+    <form action="{{ route('posts.filter')}}" method="post">
+    {{ csrf_field() }}
+        <div class="form-group form--width">
+            <label for="" class="function-sub">Category</label> 
+            @if($categories->count() != 0)
+                <select class="form-control " name="Category" required>
+                    <option name ="category_id" value=All>All</option>
+                    @foreach($categories as $category)
+                    <option name ="category_id" value={{$category->id}}>{{$category->name}}</option>
+                    @endforeach
+                </select> 
+            @endif
+        </div>
+
+        <div class="form-group form--width">
+            <label for="" class="function-sub">Status</label>
+            <select class="form-control " name="Status" required>
+                <option name ="status" value='All'>All</option>
+                <option name ="status" value=0>Open</option>
+                <option name ="status" value=1>Closed</option>
+            </select>
+        </div>
+        <button class="btn btn-conu" type="submit">Apply</button>
+    </form>
+
     @foreach($posts as $post)
     <?php
             $numberOfComments = count($post->comments);

@@ -13,6 +13,7 @@ use App\Vote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -21,13 +22,30 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($status) {
-        if ( $status == 'open') {
-            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
-        }
-        else {
-            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', TRUE)]);
-        }
+    public function index(Request $request) {
+        
+
+            $select_status = $request->get('Status');
+            $select_categ = $request->get('Category');
+            
+            if ($select_status == 'All' || $select_status == NULL) {
+                if ($select_categ == 'All'|| $select_categ == NULL) {
+                    return view('posts.list_posts', ['posts' => Post::all(), 'categories' => Category::all()]);    
+                }
+                else {
+                    return view('posts.list_posts', ['posts' => Post::all()->whereIn('category_id', $select_categ),
+                                                                        'categories' => Category::all()]);
+                }
+            }
+            if ($select_categ == 'All') {
+                return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', $select_status),
+                                                                        'categories' => Category::all()]);    
+            }
+            else {
+                return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', $select_status)
+                                                                        ->whereIn('category_id', $select_categ),
+                                                                        'categories' => Category::all()]);
+            }
     }
 
     /**

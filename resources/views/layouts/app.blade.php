@@ -48,8 +48,7 @@
                     <div class="top-right linkstwo">
                         @auth
                         <a href="{{ url('/post/create') }}">Create a Post</a>
-                        <a href="{{ url('/open/posts') }}">View Open Posts</a>
-                        <a href="{{ url('/solved/posts') }}">View Solved Posts</a>
+                        <a href="{{ route('posts.list') }}">View Posts</a>
                         <a href="{{ url( route('user.activity', ['user_id' => Auth::id()])) }}">My Posts</a>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
