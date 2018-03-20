@@ -30,22 +30,30 @@ class PostController extends Controller
             
             if ($select_status == 'All' || $select_status == NULL) {
                 if ($select_categ == 'All'|| $select_categ == NULL) {
-                    return view('posts.list_posts', ['posts' => Post::all(), 'categories' => Category::all()]);    
+                    return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')->get(),
+                                                                        'categories' => Category::all()]);    
                 }
                 else {
-                    return view('posts.list_posts', ['posts' => Post::all()->whereIn('category_id', $select_categ),
+                    return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                        ->where('category_id', $select_categ)
+                                                                        ->get(),
                                                                         'categories' => Category::all()]);
                 }
             }
             if ($select_categ == 'All') {
-                return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', $select_status),
-                                                                        'categories' => Category::all()]);    
+                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                    ->where('solved', $select_status)
+                                                                    ->get(),
+                                                                    'categories' => Category::all()]);    
             }
             else {
-                return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', $select_status)
-                                                                        ->whereIn('category_id', $select_categ),
-                                                                        'categories' => Category::all()]);
+                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                    ->where('solved', $select_status)
+                                                                    ->where('category_id', $select_categ)
+                                                                    ->get(),
+                                                                    'categories' => Category::all()]);
             }
+            //$posts = Post::orderBy('id', 'DESC')->get();
     }
 
     /**
@@ -114,7 +122,9 @@ class PostController extends Controller
      */
     public function search(Request $request) {
         $request->get('search');
-        $results = Post::where('body', 'like', '%' . $request->get('search') . '%')->get();
+        $results = Post::orderBy('created_at','DESC')
+                            ->where('body', 'like', '%' . $request->get('search') . '%')
+                            ->get();
 
         return view('posts.posts_search', ['posts' => $results]);
     }
