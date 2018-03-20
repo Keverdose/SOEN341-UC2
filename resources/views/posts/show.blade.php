@@ -1,7 +1,13 @@
 @extends('layouts.app') @section('content')
 
 <div class="container ">
-    <div><small>By {{ $post->user->fullName() }}</small></div>
+    @if($post->user->user_name==null))
+    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->fullName()}}
+    </a></small></div>
+    @else
+    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->user_name}}
+    </a></small></div>
+    @endif              
     <h1 class="post-title">{{ $post->title }}</h1>
     <div class="col-sm-1">
          <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
@@ -25,8 +31,6 @@
                     @endforeach
                     <br>
     @if(Auth::id()==$post->user_id and $post->solved==FALSE)
-
-
         <a href="{{ route('post.edit', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left edit-delete" >Edit</a>
         <a href="{{ route('post.delete', ['post' => $post->id])}}" class="btn btn-xs btn-info pull-left edit-delete">Delete</a>
         <br>
@@ -45,22 +49,14 @@
 
 
     @foreach($post->comments as $comment)
-
-
-        @if($comment->user_name != null)
-            <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">
-                           {{$comment->user_name}}</a></h4>
-        @else
-            <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">
-                           {{$comment->name}}</a> </h4>
-        @endif
-  
-        <p>{{$comment->comment}}</p>
-        <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
  
 
     <div class="col-sm-12">
-    <h4 class="post-title">{{$comment->name}} commented: </h4>
+    @if($comment->user_name != null)
+    <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">{{$comment->user_name}}</a></h4>
+    @else
+     <h4>commented:<a href="{{route('profile', ['profile'=>$comment->user_id])}}">{{$comment->name}}</a> </h4>
+    @endif
 </div>
     <div class="col-sm-1"> 
 
