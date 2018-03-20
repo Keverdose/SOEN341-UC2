@@ -113,9 +113,9 @@ class PostController extends Controller
             array_push($two_d_relevance, array($related_post->id,count(array_keys($matches, $related_post->id))
                                                                 +($related_post->view_count/20)));
         }
-
+        
         usort($two_d_relevance, function($a, $b) {
-            return $retval = $a[1] + $b[1];
+            return $retval = $b[1] <=> $a[1];
         });
 
         /**
