@@ -25,7 +25,6 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -37,8 +36,7 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
-
-     
+    
     function tags() {
         return $this->belongsToMany(Tag::class);
     }
