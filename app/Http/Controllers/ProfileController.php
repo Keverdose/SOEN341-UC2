@@ -18,9 +18,6 @@ class ProfileController extends Controller
 
     public function profile(User $profile)
     {
-
-
-       
         
         if($profile->id != Auth::user()->id)
             $profile->increment('view_count');
@@ -34,7 +31,9 @@ class ProfileController extends Controller
 
 
     public function editProfile(){
-         return view('profile.profile_edit');
+
+         $user = Auth::user();
+         return view('profile.profile_edit')->with('user',$user);
     }
 
 
@@ -44,18 +43,19 @@ class ProfileController extends Controller
     public function addProfile(Request $request){
 
     	$this ->validate($request,[
-          /*'user_name'=> 'required',
-    	  'title' => 'required',
-    	  'profile_pic' => 'required'*/
+           'user_name'=> 'required',
+    	   'title' => 'required'
     	]);
 
 
         
     	$profiles = User::find(Auth::user()->id);
-        if(!empty($request->input('user_name')))
+        
     	$profiles ->user_name = $request->input('user_name');
-        if(!empty($request->input('title')))
+       
     	$profiles ->title = $request->input('title');
+        
+        $profiles ->about_me = $request->input('about_me');
     	if(Input::hasFile('profile_pic'))
     		{
     	 $file = Input::file('profile_pic');
