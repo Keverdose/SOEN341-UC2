@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use Auth;
 use App\User;
 use App\Post;
 use Tests\DuskTestCase;
@@ -50,5 +51,17 @@ class LoginTest extends DuskTestCase
         });
     }
 
+    /**
+     * Testing for logout
+     *
+     * @test
+     */
+    public function test_logout(){
+        $this->browse(function($browser){
+            $browser->visit('/logout')
+                ->logout()
+                ->assertGuest();
+        });
+    }
 
 }
