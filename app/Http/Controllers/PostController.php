@@ -89,6 +89,19 @@ class PostController extends Controller
     }
 
     /**
+     * Display the posts with the search query in the body text.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request) {
+        $request->get('search');
+        $results = Post::where('body', 'like', '%' . $request->get('search') . '%')->get();
+
+        return view('posts.posts_search', ['posts' => $results]);
+    }
+
+    /**
      * Show the form for editing the specified post.
      *
      * @param  \App\Post  $post
