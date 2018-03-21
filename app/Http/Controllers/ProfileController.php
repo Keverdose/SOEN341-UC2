@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Auth;
 use App\User;
 use App\Comment;
+use App\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -22,9 +23,29 @@ class ProfileController extends Controller
         if($profile->id != Auth::user()->id)
             $profile->increment('view_count');
 
+
+         $posts = Post::where('user_id',$profile->id)->get();
+         $comments = Comment::where([['user_id',$profile->id],['best_answer','1']])->get();
+        
+        $count = 0;
+
+         foreach($comments as $comment){
+
+            
+            $post   = Post::where('id',$comment->post_id)->get();
+            $postss = $post{0};
+
+            
+            if($postss->user_id == $comment->user_id)
+                 $comments->forget($count);
+
+             $count++;
+               
+        }
+
          $clientCreation = $profile->created_at;
          $time =Carbon::createFromTimeStamp(strtotime($clientCreation))->diffForHumans();
-         return view('profile.profile')->with('time',$time)->with('user',$profile); 
+         return view('profile.profile')->with('time',$time)->with('user',$profile)->with('posts',$posts)->with('comments',$comments);
     
     }
 
