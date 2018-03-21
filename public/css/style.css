@@ -284,3 +284,38 @@ body {
   border-style: ridge;
 }
 
+
+.avatars{
+  position: relative;bottom: 12px;
+  border-radius:100%;
+  width:40px;
+  height:40px;}
+
+
+.user_stats{
+    position: relative;left: 90%;
+    top:100px;
+    font-family: "Times New Roman", Times, serif;}
+
+#profile{
+    font-size: large;
+    position: relative;left:10%;}     
+                        
+
+.picture{
+    border-radius: 150%;
+    width:150px;
+    height:150px;}
+
+.user_info{
+    position: relative;left: 10%;
+    font: italic bold 12px/30px Georgia, serif}
+
+#user_name{
+    font-size: large;}
+
+
+#about_me{
+    background-color:white;
+    border-color: white;}
+

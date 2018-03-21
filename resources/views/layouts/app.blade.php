@@ -6,8 +6,7 @@
                       bottom: 15px;
             border-radius:100%;
             width:40px;
-            height:40ddpx;
-            
+            height:40px;        
             }
 </style>
 
