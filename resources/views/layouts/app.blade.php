@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 
-<style type = "text/css">
-    .avatars{
-            position: relative;
-                      bottom: 15px;
-            border-radius:100%;
-            width:40px;
-            height:40px;        
-            }
-</style>
-
 
 <html lang="{{ app()->getLocale() }}">
 
@@ -63,7 +53,7 @@
                         <a href="{{url('profile', Auth::user())}}">
                         <?php $user = Auth::user();?>
                         @if(!empty($user->profile_pic))
-                        <img src ="{{$user->profile_pic}}" class = "avatars" alt="" style="float:right";>
+                        <img src ="{{$user->profile_pic}}" class = "avatars" alt="" >
                         @else
                         <img src ="{{url('images/avatar.jpg')}}" class = "avatars" alt="">
                         @endif

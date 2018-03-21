@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
 
 <div class="container ">
-    @if($post->user->user_name==null))
+    @if($post->user->user_name==null)
     <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->fullName()}}
     </a></small></div>
     @else
