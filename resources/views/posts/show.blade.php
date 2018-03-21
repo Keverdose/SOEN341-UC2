@@ -98,58 +98,60 @@
 @endsection
 
 @section('related')
-    
-@foreach($related as $post)
-        <?php
-            $numberOfComments = count($post->comments);
-            $numberOfViews = $post->view_count;
-        ?>
-            <div id="rowContainer1" class="row">
-                <div class="col-sm-2">
-                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
-                          WIDTH: 100%;
-                          display: block;
-                          text-align: center;">
-                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
-                        </br>
-                    Comments</span>
-                </div>
+    @if($related != NULL)    
+        @foreach($related as $post)
+                <?php
+                    $numberOfComments = count($post->comments);
+                    $numberOfViews = $post->view_count;
+                ?>
+                    <div id="rowContainer1" class="row">
+                        <div class="col-sm-2">
+                            <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                                WIDTH: 100%;
+                                display: block;
+                                text-align: center;">
+                                <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
+                                </br>
+                            Comments</span>
+                        </div>
 
-                <div class="col-sm-2">
-                    <span style=   " overflow: auto;
-                          WIDTH: 100%;
-                          display: block;
-                          text-align: center;">
-                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
-                        </br>
-                        Votes</span>
-                </div>
+                        <div class="col-sm-2">
+                            <span style=   " overflow: auto;
+                                WIDTH: 100%;
+                                display: block;
+                                text-align: center;">
+                                <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
+                                </br>
+                                Votes</span>
+                        </div>
 
-                <div class="col-sm-2">
-                    <span class = "nb-of-Comments-Block "style=   " overflow: auto;
-                          WIDTH: 100%;
-                          display: block;
-                          text-align: center;">
-                        <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
-                        </br>
-                        Views</span>
-                </div>
+                        <div class="col-sm-2">
+                            <span class = "nb-of-Comments-Block "style=   " overflow: auto;
+                                WIDTH: 100%;
+                                display: block;
+                                text-align: center;">
+                                <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
+                                </br>
+                                Views</span>
+                        </div>
 
-                <div class="col-sm-6" >
-                    <span style=   " overflow: auto;
-                          WIDTH: 100%;
-                          display: block;
-                          text-align: center;">
+                        <div class="col-sm-6" >
+                            <span style=   " overflow: auto;
+                                WIDTH: 100%;
+                                display: block;
+                                text-align: center;">
 
-                    <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
-                    @foreach($post->tags as $tag)
-                      <label class ="tags">{{$tag->name}}</label>
-                    @endforeach
-                        </span>
-                </div>
+                            <a href="{{route('post.show', ['post' => $post->id])}}">{{ $post->title }}</a>
+                            @foreach($post->tags as $tag)
+                            <label class ="tags">{{$tag->name}}</label>
+                            @endforeach
+                                </span>
+                        </div>
 
-            </div>
+                    </div>
 
-    @endforeach
-
+        @endforeach
+    @else
+    There are no related posts
+    @endif
 @endsection
