@@ -16,17 +16,15 @@
     </br>
 
     <form action="{{ route('posts.filter')}}" method="post">
-    {{ csrf_field() }}
+        {{ csrf_field() }}
         <div class="form-group form--width">
-            <label for="" class="function-sub">Category</label> 
-            @if($categories->count() != 0)
-                <select class="form-control " name="Category" required>
+            <label for="" class="function-sub">Category</label> @if($categories->count() != 0)
+            <select class="form-control " name="Category" required>
                     <option name ="category_id" value=All>All</option>
                     @foreach($categories as $category)
                     <option name ="category_id" value={{$category->id}}>{{$category->name}}</option>
                     @endforeach
-                </select> 
-            @endif
+                </select> @endif
         </div>
 
         <div class="form-group form--width">
@@ -39,8 +37,7 @@
         </div>
         <button class="btn btn-conu" type="submit">Apply</button>
     </form>
-
-    @foreach($posts as $post)
+    <br> @foreach($posts as $post)
     <?php
             $numberOfComments = count($post->comments);
             $numberOfViews = $post->view_count;
@@ -86,7 +83,7 @@
                     @foreach($post->tags as $tag)
                       <label class ="tags">{{$tag->name}}</label>
                     @endforeach
-                    <label>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</label>
+                    <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
                         </span>
             </div>
 
