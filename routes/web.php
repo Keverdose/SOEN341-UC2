@@ -20,10 +20,12 @@ Route::get('/redirect/{provider}', 'SocialController@redirect')->name('social.re
 Route::get('/callback/{provider}', 'SocialController@callback')->name('social.callback');
 
 Route::get('/home', 'HomeController@index');
-Route::get('/profile/{profile}', 'ProfileController@profile') ->name('profile');
-Route::get('/profile_edit', 'ProfileController@editProfile')->name('editProfile');
-Route::post('/addProfile', 'ProfileController@addProfile') ->name('addProfile');
 
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/profile/{profile}', 'ProfileController@profile') ->name('profile');
+    Route::get('/profile_edit', 'ProfileController@editProfile')->name('editProfile');
+    Route::post('/addProfile', 'ProfileController@addProfile') ->name('addProfile');
+});
 
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
 Route::post('comment/{comment}/updated', 'CommentController@update')->name('comment.update');
