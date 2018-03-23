@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile_edit';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -49,9 +49,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|string|email|max:255|unique:users',
-            'password'   => 'required|string|min:6|confirmed',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 

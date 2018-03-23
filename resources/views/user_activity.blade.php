@@ -13,11 +13,7 @@
 
     <h2 class="function-title">{{Auth::user()->fullName()}} Posts</h2>
     </br>
-        <?php
-        if(sizeof($posts)== 0){
-         echo '<h4>No posts available</h4>';
-        }
-        ?>
+
     @foreach($posts as $post)
 
     <?php
@@ -81,13 +77,6 @@
         </br>
         <h2 class="function-title">{{Auth::user()->fullName()}} Comments</h2>
         </br>
-
-
-        <?php
-        if(sizeof($comments)== 0){
-            echo '<h4>No comments available</h4>';
-        }
-        ?>
 
         @foreach($comments as $comment)
 

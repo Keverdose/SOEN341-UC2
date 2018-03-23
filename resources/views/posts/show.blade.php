@@ -1,16 +1,10 @@
 @extends('layouts.app') @section('content')
 
 <div class="container ">
+
     <h2 class=" function-title">{{ $post->title }}</h2>
-    @if($post->user->user_name==null)
-    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->fullName()}}
-    </a></small></div>
-    @else
-    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->user_name}}
-    </a></small></div>
-    @endif              
+    <div><small>By {{ $post->user->fullName() }}</small></div>
     <hr>
-    
     <div class="col-sm-1">
         <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
             {{csrf_field()}}
@@ -25,8 +19,8 @@
 
     </div>
     <div class="col-sm-11">
-
         <p>{{ $post->body }}</p>
+
         <p>Posted in: {{$post->category->name}}</p>
         @foreach($post->tags as $tag)
         <label class="tags">{{$tag->name}}</label> @endforeach
@@ -47,13 +41,11 @@
     <div class="col-sm-1"> </div>
     <div class="col-sm-11">
         <h3>Comments</h3>
+
+
         @foreach($post->comments as $comment)
         <div class="col-sm-12">
-            @if($comment->user_name != null)
-              <h4><a href="{{route('profile', ['profile'=>$comment->user_id])}}">{{$comment->user_name}}</a> commented:</h4>
-            @else
-              <h4><a href="{{route('profile', ['profile'=>$comment->user_id])}}">{{$comment->name}}</a> commented:</h4>
-            @endif
+            <h4 class="post-title">{{$comment->name}} commented: </h4>
         </div>
         <div class="col-sm-1">
 
@@ -69,6 +61,7 @@
             </form>
 
             <!-- End Votes -->
+
         </div>
         <div class="col-sm-11">
             <p>{{$comment->comment}}</p>
@@ -91,7 +84,7 @@
 
                     <div class="form-group">
                         <label for="">Comment</label>
-                        <textarea name="comment" id="" cols="30" rows="10" class="form-control" required></textarea>
+                        <textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
                     </div>
 
                     <button class="btn btn-conu" type="submit">Add Comment</button>

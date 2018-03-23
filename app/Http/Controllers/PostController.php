@@ -53,6 +53,7 @@ class PostController extends Controller
                                                                     ->get(),
                                                                     'categories' => Category::all()]);
             }
+            //$posts = Post::orderBy('id', 'DESC')->get();
     }
 
     /**

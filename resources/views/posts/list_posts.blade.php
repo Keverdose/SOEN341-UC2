@@ -15,7 +15,6 @@
     <h2 class="function-title">Currently Open Posts</h2>
     </br>
 
-
     <form action="{{ route('posts.filter')}}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
@@ -43,16 +42,7 @@
       </br></br>
     </form>
   <br> @foreach($posts as $post)
-   
-        <?php
-        if(sizeof($posts)== 0){
-            echo '<h4>No posts available</h4>';
-        }
-        ?>
-        
-    @foreach($posts as $post)
-        <?php
-
+    <?php
             $numberOfComments = count($post->comments);
             $numberOfViews = $post->view_count;
         ?>
@@ -101,7 +91,9 @@
                         </span>
             </div>
 
-    @endforeach
+        </div>
+
+        @endforeach
 
 </div>
 @endsection
