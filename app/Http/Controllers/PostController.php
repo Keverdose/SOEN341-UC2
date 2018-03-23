@@ -23,6 +23,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($status) {
+
+  
+
         if ( $status == 'open') {
             return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
         }
@@ -143,6 +146,19 @@ class PostController extends Controller
             return view('posts.show', ['post' => $post, 'related' => $sorted_posts]);
         }
         else return view('posts.show', ['post' => $post, 'related' => NULL]);
+    }
+
+    /**
+     * Display the posts with the search query in the body text.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request) {
+        $request->get('search');
+        $results = Post::where('body', 'like', '%' . $request->get('search') . '%')->get();
+
+        return view('posts.posts_search', ['posts' => $results]);
     }
 
     /**

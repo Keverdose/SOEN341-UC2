@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', function () {return view('welcome');})->name('home');
 
 
 Auth::routes();
@@ -22,6 +20,12 @@ Route::get('/redirect/{provider}', 'SocialController@redirect')->name('social.re
 Route::get('/callback/{provider}', 'SocialController@callback')->name('social.callback');
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/profile/{profile}', 'ProfileController@profile') ->name('profile');
+    Route::get('/profile_edit', 'ProfileController@editProfile')->name('editProfile');
+    Route::post('/addProfile', 'ProfileController@addProfile') ->name('addProfile');
+});
 
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
 Route::post('comment/{comment}/updated', 'CommentController@update')->name('comment.update');
@@ -32,10 +36,11 @@ Route::post('comment/{comment}/destroyed', 'CommentController@destroy')->name('c
 Route::post('post/{post}/deleted', 'PostController@delete')->name('post.delete');
 Route::post('post/{post}/destroyed', 'PostController@destroy')->name('post.destroy');
 
-
 Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
 
 Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
+    Route::get('/query', 'PostController@search')->name('post.search');
+
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
     

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -19,13 +20,17 @@ class CommentController extends Controller
     	$this->validate($request,array(
     		'comment' => 'required'
 		));
-		
+
+
+		$userName = DB::table('users')->where('id',Auth::user()->id)->first();
+    
+      
     	$id = Auth::user()->id;
     	$name = Auth::user()->first_name;
-
     	$comment = new Comment();
     	$comment->comment = $request->comment;
 		$comment->name = $name;
+		$comment->user_name = $userName->user_name;
 		$comment->best_answer = FALSE;
     	$comment->post()->associate($post);
     	$comment->user()->associate($id);
@@ -40,6 +45,8 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
 	public function edit(Comment $comment) {
+
+
         return view ('comments.edit', ['comment' => $comment]);
 	}
 

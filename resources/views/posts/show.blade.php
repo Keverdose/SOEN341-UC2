@@ -1,9 +1,17 @@
-@extends('layouts.single_post') @section('content')
-<div class="container ">
+@extends('layouts.single_post') 
 
-    <h2 class=" function-title"><b>{{ $post->title }}</b></h2>
-    <div><small>By {{ $post->user->fullName() }}</small></div>
+@section('content')
+<div class="container ">
+    <h2 class=" function-title">{{ $post->title }}</h2>
+    @if($post->user->user_name==null)
+    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->fullName()}}
+    </a></small></div>
+    @else
+    <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->user_name}}
+    </a></small></div>
+    @endif              
     <hr>
+    
     <div class="col-sm-1">
         <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
             {{csrf_field()}}
@@ -20,6 +28,7 @@
     <div class="col-sm-6">
         <p>{{ $post->body }}</p>
 
+        <p>{{ $post->body }}</p>
         <p>Posted in: {{$post->category->name}}</p>
         @foreach($post->tags as $tag)
         <label class="tags">{{$tag->name}}</label> @endforeach
@@ -62,7 +71,6 @@
             </form>
 
             <!-- End Votes -->
-
         </div>
 
         <div class="col-sm-11">
@@ -87,7 +95,7 @@
                     <div class="form-group">
                         </br>
                         <label for="">Comment</label>
-                        <textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="comment" id="" cols="30" rows="10" class="form-control" required></textarea>
                     </div>
 
                     <button class="btn btn-conu" type="submit">Add Comment</button>

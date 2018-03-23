@@ -27,7 +27,7 @@
             <div class="welcome-message col-sm-4" >
                 @auth
                 <h2><b>Welcome {{Auth::user()->fullName()}}, get answers to questions you didn't know you had.</b></h2>
-                <p>StackUnderflow provides modivated web designers with a platform to share their
+                <p>StackUnderflow provides motivated web designers with a platform to share their
                   knowledge and experience.</p>
 
 

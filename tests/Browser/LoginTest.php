@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use Auth;
 use App\User;
 use App\Post;
 use Tests\DuskTestCase;
@@ -11,19 +12,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('StackUnderflow');
-        });
-    }
-
     /**
      * Testing for login with wrong credentials
      *
@@ -59,9 +47,21 @@ class LoginTest extends DuskTestCase
                 ->type('email', $user->email)
                 ->type('password', 'testpass123')
                 ->press('Login')
-                ->assertPathIs('/home');
+                ->assertPathIs('/');
         });
     }
 
+    /**
+     * Testing for logout
+     *
+     * @test
+     */
+    public function test_logout(){
+        $this->browse(function($browser){
+            $browser->visit('/logout')
+                ->logout()
+                ->assertGuest();
+        });
+    }
 
 }
