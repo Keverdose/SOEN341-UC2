@@ -124,8 +124,15 @@ class PostController extends Controller
              * the post id's in order of relevance
              */
             $ordered_post_ids = array();
-            for ($x=0; $x<count($initial_related); $x++)
-            {
+            
+            if (count($initial_related) < 4) {
+                $count = $initial_related;
+            }
+            else {
+                $count = 4;
+            }
+
+            for ($x=0; $x<$count; $x++) {
                 array_push($ordered_post_ids, $two_d_relevance[$x][0]);
             }
 
