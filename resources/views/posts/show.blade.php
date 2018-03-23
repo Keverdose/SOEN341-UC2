@@ -91,7 +91,7 @@
 
                     <div class="form-group">
                         <label for="">Comment</label>
-                        <textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="comment" id="" cols="30" rows="10" class="form-control" required></textarea>
                     </div>
 
                     <button class="btn btn-conu" type="submit">Add Comment</button>
