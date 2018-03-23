@@ -1,9 +1,7 @@
-@extends('layouts.single_post') 
-
-@section('content')
+@extends('layouts.single_post') @section('content')
 <div class="container ">
 
-    <h2 class=" function-title">{{ $post->title }}</h2>
+    <h2 class=" function-title"><b>{{ $post->title }}</b></h2>
     <div><small>By {{ $post->user->fullName() }}</small></div>
     <hr>
     <div class="col-sm-1">
@@ -19,7 +17,7 @@
         </form>
 
     </div>
-    <div class="col-sm-11">
+    <div class="col-sm-6">
         <p>{{ $post->body }}</p>
 
         <p>Posted in: {{$post->category->name}}</p>
@@ -41,12 +39,14 @@
 
     <div class="col-sm-1"> </div>
     <div class="col-sm-11">
-        <h3>Comments</h3>
+        </br>
+        </br>
+        <h2 style="color:darkred"><b>Comments</b></h2>
 
 
         @foreach($post->comments as $comment)
         <div class="col-sm-12">
-            <h4 class="post-title">{{$comment->name}} commented: </h4>
+            <h5 class="post-title">{{$comment->name}} commented </h5>
         </div>
         <div class="col-sm-1">
 
@@ -64,6 +64,7 @@
             <!-- End Votes -->
 
         </div>
+
         <div class="col-sm-11">
             <p>{{$comment->comment}}</p>
 
@@ -84,6 +85,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group">
+                        </br>
                         <label for="">Comment</label>
                         <textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
                     </div>
@@ -95,48 +97,51 @@
     </div>
 </div>
 
-@endsection
-
-@section('related')
-    @if($related != NULL)    
-        @foreach($related as $post)
-                <?php
+@endsection @section('related') @if($related != NULL)
+<div class="contain2">
+    <p style="font-weight:600; font-size:16px">Related Posts</p>
+</div>@foreach($related as $post)
+<?php
                     $numberOfComments = count($post->comments);
                     $numberOfViews = $post->view_count;
                 ?>
-                    <div id="rowContainer1" class="row">
-                        <div class="col-sm-2">
-                            <span class = "nb-of-Comments-Block "style=   " overflow: auto;
-                                WIDTH: 100%;
+
+
+
+    <div class="rowContainer2 contain2" class="row">
+        <p></p>
+        <div class="col-sm-2">
+            <span class="nb-of-Comments-Block " style=" visible !important;
+                                WIDTH: 110%;
                                 display: block;
                                 text-align: center;">
                                 <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfComments }}</a>
                                 </br>
                             Comments</span>
-                        </div>
+        </div>
 
-                        <div class="col-sm-2">
-                            <span style=   " overflow: auto;
-                                WIDTH: 100%;
+        <div class="col-sm-2">
+            <span style=" overflow: visible !important;
+                                WIDTH: 110%;
                                 display: block;
                                 text-align: center;">
                                 <a href="{{route('post.show', ['post' => $post->id])}}">{{$post->countVotes()}}</a>
                                 </br>
                                 Votes</span>
-                        </div>
+        </div>
 
-                        <div class="col-sm-2">
-                            <span class = "nb-of-Comments-Block "style=   " overflow: auto;
-                                WIDTH: 100%;
+        <div class="col-sm-2">
+            <span class="nb-of-Comments-Block " style=" overflow: visible !important;
+                                WIDTH: 110%;
                                 display: block;
                                 text-align: center;">
                                 <a href="{{route('post.show', ['post' => $post->id])}}">{{$numberOfViews }}</a>
                                 </br>
                                 Views</span>
-                        </div>
+        </div>
 
-                        <div class="col-sm-6" >
-                            <span style=   " overflow: auto;
+        <div class="col-sm-6">
+            <span style=" overflow: auto;
                                 WIDTH: 100%;
                                 display: block;
                                 text-align: center;">
@@ -146,12 +151,9 @@
                             <label class ="tags">{{$tag->name}}</label>
                             @endforeach
                                 </span>
-                        </div>
+        </div>
 
-                    </div>
+    </div>
 
-        @endforeach
-    @else
-    There are no related posts
-    @endif
-@endsection
+
+    @endforeach @else There are no related posts @endif @endsection

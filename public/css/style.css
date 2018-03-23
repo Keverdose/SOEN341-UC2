@@ -119,7 +119,22 @@ body {
     transform: translateZ(0);
 }
 
-#rowContainer1.row:hover {
+.rowContainer1.row:hover {
+    background-color: whitesmoke;
+}
+
+.rowContainer2 {
+    border-top: 1px solid darkred;
+    font-size: 10px;
+    height: 66px;
+}
+
+.contain2 {
+    width: 63%;
+    margin-left: 115px;
+}
+
+#rowContainer2.row:hover {
     background-color: whitesmoke;
 }
 
@@ -287,4 +302,9 @@ a:hover {
 a {
     color: darkgoldenrod;
     text-decoration: none;
+}
+
+#sidebar {
+    padding-top: 120px;
+    ;
 }
