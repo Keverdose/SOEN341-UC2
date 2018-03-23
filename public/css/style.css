@@ -96,6 +96,12 @@ body {
     border-color: goldenrod;
 }
 
+.btn-apply{
+
+  margin-top: 4px;
+  width: 150px;
+}
+
 .container {
     overflow: hidden;
 }
@@ -217,7 +223,6 @@ body {
     font-weight: 300;
 }
 
-
 .top-middle {
     position: absolute;
     right: 700px;
@@ -236,14 +241,13 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-    width: 400px !important;
+    width: 440px !important;
     background-color: #fff;
     border-color: goldenrod;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
-
 
 .tags {
     font-size: 12px;
@@ -292,11 +296,31 @@ input[type=search]:focus {
 }
 
 .image_water {
-    width: 500px;
-    height: 285px;
-    margin-right: 80px;
-    border: 10px solid;
-    border-style: ridge;
+    width: 550px;
+    height: 335px;
+    margin-left: 50px;
+    border-width: 15px;
+    border-style: solid;
+    -webkit-border-image: -webkit-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, darkred, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.top-to-bottom {
+    border-width: 3px;
+    border-style: solid;
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.form-control{
+
+    width: 300px;
+    margin-right: 50px;
 }
 
 .form-control:focus {
@@ -355,5 +379,4 @@ a:hover {
 a {
     color: darkgoldenrod;
     text-decoration: none;
-
 }
