@@ -28,7 +28,6 @@
     <div class="col-sm-6">
         <p>{{ $post->body }}</p>
 
-        <p>{{ $post->body }}</p>
         <p>Posted in: {{$post->category->name}}</p>
         @foreach($post->tags as $tag)
         <label class="tags">{{$tag->name}}</label> @endforeach
