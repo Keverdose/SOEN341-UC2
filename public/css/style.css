@@ -1,10 +1,8 @@
 html,
 body {
     background-color: #fff;
-
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-
     margin: 0;
 }
 
@@ -29,7 +27,7 @@ body {
 .top-right {
     position: absolute;
     right: 10px;
-    top: 18px;
+    top: 15px;
 }
 
 .content {
@@ -53,13 +51,13 @@ body {
 
 .linkstwo>a {
     color: white;
-    padding: 14px 15px;
+    padding: 12px 15px;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 12px;
-    line-height: 22px;
-    height: 50px
+    line-height: 18px;
+    height: 40px
 }
 
 .m-b-md {
@@ -98,91 +96,81 @@ body {
     border-color: goldenrod;
 }
 
-.container{
-
+.container {
     overflow: hidden;
-
 }
 
 @keyframes slide-left {
-
-    from{
+    from {
         margin-left: 100%;
         width: 300%;
     }
-
-    to{
+    to {
         margin-left: 0%;
         width: 100%;
     }
 }
 
 #rowContainer1 {
-
     border-top: 1px solid darkred;
     width: 100%;
     animation: slide-left 1.2s;
     -webkit-animation-timing-function: ease-in-out;
     transform: translateZ(0);
-
 }
 
 #rowContainer1.row:hover {
     background-color: whitesmoke;
-
 }
 
-.postsTitle{
+.postsTitle {
     text-overflow: ellipsis;
     margin-bottom: 0px;
     overflow: hidden;
     height: 70px;
 }
 
-.titleLink{
+.titleLink {
     text-overflow: ellipsis;
     overflow: hidden;
     height: 40px;
     font-size: 13pt;
 }
 
-.postsTitle>p{
+.postsTitle>p {
     text-overflow: ellipsis;
     overflow: hidden;
     height: 30px;
     font-size: 8.5pt;
-
 }
 
-.col-sm-1>span{
+.col-sm-1>span {
     font-size: 8.5pt;
 }
 
-.col-sm-1>span>a{
-
+.col-sm-1>span>a {
     overflow-x: hidden;
     font-size: 14pt;
 }
 
-.col-sm-9>span>a{
+.col-sm-9>span>a {
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block;
     overflow: hidden
 }
 
-.col-sm-9>span>p{
+.col-sm-9>span>p {
     font-size: 8.5pt;
 }
 
-.col-sm-9{
+.col-sm-9 {
     overflow: hidden;
     height: 55px;
     font-size: 12.5pt;
-
 }
 
-.titleOfComment{
+.titleOfComment {
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 400px;
@@ -190,11 +178,9 @@ body {
     overflow: hidden;
     height: 25px;
     font-size: 12.5pt;
-
 }
 
-.commentContent{
-
+.commentContent {
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,7 +204,7 @@ body {
     color: white;
 }
 
-.welcome-message{
+.welcome-message {
     font-style: normal;
     color: darkred;
     font-weight: 200;
@@ -227,14 +213,40 @@ body {
     position: relative;
 }
 
-.welcome-message>p{
-        font-weight:300;
-
-
+.welcome-message>p {
+    font-weight: 300;
 }
 
-.tags{
-        font-size: 12px;
+
+.top-middle {
+    position: absolute;
+    right: 620px;
+    top: 8px;
+}
+
+input[type=search] {
+    border: solid 3px darkred;
+    width: 175px !important;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=search]:focus {
+    width: 400px !important;
+    background-color: #fff;
+    border-color: goldenrod;
+    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+}
+
+
+.tags {
+    font-size: 12px;
     color: #39739d;
     background-color: #E1ECF4;
     border-color: transparent;
@@ -252,70 +264,96 @@ body {
     border-radius: 0;
     transition: all .15s ease-in-out;
 }
-.edit-delete{
-        margin-right: 5px;
+
+.edit-delete {
+    margin-right: 5px;
     margin-top: 5px;
 }
-.post-title{
-        padding: 5px 0;
+
+.post-title {
+    padding: 5px 0;
     border-bottom: 1px solid #e4e6e8;
     font-size: 24px;
     line-height: 1.35;
     font-weight: normal;
     margin-bottom: .5em;
 }
-.votecount{
-        display: block;
+
+.votecount {
+    display: block;
     color: #6a737c;
     font-size: 20px;
     margin-left: 21px;
 }
-.updownVoteButton{
-        border: 0;
+
+.updownVoteButton {
+    border: 0;
     background: transparent;
 }
 
-
-.image_water{
-  width : 500px;
-  height:285px;
-  margin-right:80px;
-  border: 10px solid;
-  border-style: ridge;
+.image_water {
+    width: 500px;
+    height: 285px;
+    margin-right: 80px;
+    border: 10px solid;
+    border-style: ridge;
 }
 
+.form-control:focus {
+    border-color: darkred !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px darkred !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px darkred !important;
+}
 
 .avatars{
   position: relative;bottom: 12px;
   border-radius:100%;
   width:40px;
-  height:40px;}
+  height:40px;
+}
 
 
 .user_stats{
     position: relative;left: 90%;
     top:100px;
-    font-family: "Times New Roman", Times, serif;}
+    font-family: "Times New Roman", Times, serif;
+}
 
 #profile{
     font-size: large;
-    position: relative;left:10%;}     
+    position: relative;left:10%;
+}     
                         
 
 .picture{
     border-radius: 150%;
     width:150px;
-    height:150px;}
+    height:150px;
+}
 
 .user_info{
     position: relative;left: 10%;
     font: italic bold 12px/30px Georgia, serif}
 
 #user_name{
-    font-size: large;}
+    font-size: large;
+}
 
 
 #about_me{
     background-color:white;
-    border-color: white;}
+    border-color: white;
+}
 
+a:focus,
+a:hover {
+    color: goldenrod;
+    text-decoration: underline;
+}
+
+a {
+    color: darkgoldenrod;
+    text-decoration: none;
+
+}
