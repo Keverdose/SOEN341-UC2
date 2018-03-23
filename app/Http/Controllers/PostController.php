@@ -23,6 +23,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($status) {
+
+  
+
         if ( $status == 'open') {
             return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
         }

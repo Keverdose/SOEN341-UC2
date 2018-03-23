@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-static-top nav-background ">
            <div class="container">
                 <div class="navbar-header">
@@ -23,15 +22,25 @@
                     </div>
                     <!-- Right Side Of Navbar -->
                     <div class="top-right linkstwo">
-                        @auth
+                    
+                       @auth
+                        <a href="{{ url('/') }}">Home</a>
                         <a href="{{ url('/post/create') }}">Create a Post</a>
                         <a href="{{ url('/open/posts') }}">View Open Posts</a>
                         <a href="{{ url('/solved/posts') }}">View Solved Posts</a>
                         <a href="{{ url( route('user.activity', ['user_id' => Auth::id()])) }}">My Posts</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        
+
+                        <a href="{{url('profile', Auth::user())}}">
+                        <?php $user = Auth::user();?>
+                        @if(!empty($user->profile_pic))
+                        <img src ="{{$user->profile_pic}}" class = "avatars" alt="" >
+                        @else
+                        <img src ="{{url('images/avatar.jpg')}}" class = "avatars" alt="">
+                        @endif
+                        </a>
+
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -39,7 +48,9 @@
 
                         @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a> @endauth
+                        <a href="{{ route('register') }}">Register</a> 
+                        @endauth
+                       
                     </div>
                 </div>
             </div>

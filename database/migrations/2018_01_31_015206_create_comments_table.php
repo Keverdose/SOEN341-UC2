@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->integer('post_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('name');
+            $table->string('user_name')->nullable();
             $table->text('comment');
             $table->boolean('best_answer');
             $table->timestamps();
