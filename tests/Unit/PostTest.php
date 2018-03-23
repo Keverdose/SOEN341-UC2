@@ -14,28 +14,13 @@ class PostTest extends TestCase
 
     use DatabaseMigrations;
 
-
-    /**
-     * Testing for Post creation
-     *
-     * @return void
-     */
-    public function test_post_creation(){
-        factory(Post::class)->create([
-            'title' => 'test title',
-            'body' => 'test body',
-            'category_id' => 1,
-            'solved' => FALSE
-        ]);
-        $this->assertDatabaseHas('posts', ['body' => 'test body']);
-    }
-
     /**
      * Testing for votes
      *
      * @return void
      */
-    public function test_vote(){
+    public function test_vote()
+    {
         $post = factory(Post::class)->create();
         $user = User::first();
 
@@ -47,6 +32,7 @@ class PostTest extends TestCase
 
         $post->setVote($user, false);
         $this->assertEmpty($post->votes()->get());
+
     }
 
 }

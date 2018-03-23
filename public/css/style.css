@@ -225,7 +225,9 @@ body {
 
 .top-middle {
     position: absolute;
-    right: 700px;
+ 
+    right: 430px;
+
     top: 8px;
 }
 

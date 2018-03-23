@@ -1,4 +1,4 @@
-@extends('layouts.main') @section('content')
+@extends('layouts.app') @section('content')
 
 <!-- Styles -->
 
@@ -100,7 +100,6 @@
                     <p>Last Edit: {{mb_substr($post->updated_at, 0, 10)}}</p>
                         </span>
             </div>
-        </div>
 
     @endforeach
 
