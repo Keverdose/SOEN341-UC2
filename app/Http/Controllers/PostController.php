@@ -126,7 +126,7 @@ class PostController extends Controller
             $ordered_post_ids = array();
             
             if (count($initial_related) < 4) {
-                $count = $initial_related;
+                $count = count($initial_related);
             }
             else {
                 $count = 4;
