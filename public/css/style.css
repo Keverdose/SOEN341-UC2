@@ -96,6 +96,12 @@ body {
     border-color: goldenrod;
 }
 
+.btn-apply{
+
+  margin-top: 4px;
+  width: 150px;
+}
+
 .container {
     overflow: hidden;
 }
@@ -295,7 +301,6 @@ input[type=search]:focus {
     margin-left: 50px;
     border-width: 15px;
     border-style: solid;
-    border-top: 15px;
     -webkit-border-image: -webkit-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
     -moz-border-image: -moz-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
     -o-border-image: -o-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
@@ -310,6 +315,12 @@ input[type=search]:focus {
     -moz-border-image: -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
     -o-border-image: -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
     border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.form-control{
+
+    width: 300px;
+    margin-right: 50px;
 }
 
 .form-control:focus {
