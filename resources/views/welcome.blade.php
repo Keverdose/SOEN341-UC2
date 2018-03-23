@@ -24,32 +24,35 @@
         @endif
 
         <div class="content">
-            <div class="welcome-message col-sm-4">
+            <div class="welcome-message col-sm-4" >
                 @auth
                 <h2><b>Welcome {{Auth::user()->fullName()}}, get answers to questions you didn't know you had.</b></h2>
-                <p>StackUnderflow provides motivated web designers with a platform to share their knowledge and experience.</p>
+                <p>StackUnderflow provides motivated web designers with a platform to share their
+                  knowledge and experience.</p>
 
 
-                @else
-                <h2><b>Welcome, get answers to questions you didn't know you had.</b></h2>
-                <p>StackUnderflow provides modivated web designers with a platform to share their knowledge and experience.</p>
+                  @else
+                  <h2><b>Welcome, get answers to questions you didn't know you had.</b></h2>
+                  <p>StackUnderflow provides modivated web designers with a platform to share their
+                    knowledge and experience.</p>
 
-                </br><a href='{{ route(' register ') }}'><button class = "btn btn-conu">
+                  </br><a href= '{{ route('register') }}'><button class = "btn btn-conu">
                     Register Here</button></a>
 
-                <p class="links"><a href='{{ route(' login ') }}'> login </a></p>
-                @endauth
-            </div>
+                  <p class = "links"><a href= '{{ route('login') }}'> login </a></p>
+                  @endauth
+                </div>
 
-            <div class="col-sm-1"></div>
-            <div class="col-sm-5">
-                <img src="http://www.bluebison.net/sketchbook/2006/0506/monkey_snake_swimming.jpg" class="image_water" alt="waterfall">
+                <div class= "col-sm-2"></div>
+                <div class="col-sm-4">
+                  <img src="http://www.bluebison.net/sketchbook/2006/0506/monkey_snake_swimming.jpg"
+                  class="image_water" alt="waterfall">
+                </div>
+                
+                </div>
+              </div>
             </div>
-
-        </div>
-    </div>
-    </div>
-</body>
+          </body>
 
 </html>
 @endsection
