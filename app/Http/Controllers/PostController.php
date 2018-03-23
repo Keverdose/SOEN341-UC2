@@ -22,17 +22,38 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($status) {
-
-  
-
-        if ( $status == 'open') {
-            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
+    public function index(Request $request) {
+        
+        $select_status = $request->get('Status');
+        $select_categ = $request->get('Category');
+        
+        if ($select_status == 'All' || $select_status == NULL) {
+            if ($select_categ == 'All'|| $select_categ == NULL) {
+                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')->get(),
+                                                                    'categories' => Category::all()]);    
+            }
+            else {
+                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                    ->where('category_id', $select_categ)
+                                                                    ->get(),
+                                                                    'categories' => Category::all()]);
+            }
+        }
+        if ($select_categ == 'All') {
+            return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                ->where('solved', $select_status)
+                                                                ->get(),
+                                                                'categories' => Category::all()]);    
         }
         else {
-            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', TRUE)]);
+            return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
+                                                                ->where('solved', $select_status)
+                                                                ->where('category_id', $select_categ)
+                                                                ->get(),
+                                                                'categories' => Category::all()]);
         }
-    }
+        //$posts = Post::orderBy('id', 'DESC')->get();
+}
 
     /**
      * Show the form for creating a new post.

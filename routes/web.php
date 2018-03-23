@@ -61,6 +61,6 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
     Route::get('/comment/{comment}/{vote}', 'CommentController@vote')->where('vote', '(up|down)')->name('comment.vote');
 });
 
-Route::get('/{status}/posts', 'PostController@index')->name('posts.list');
-
+Route::post('/posts_list/filtered', 'PostController@index')->name('posts.filter');
+Route::get('/posts_list', 'PostController@index')->name('posts.list');
 Route::post('comments/{post}','CommentController@store')->name('comments.store');
