@@ -22,7 +22,7 @@ class TagTest extends TestCase
         factory(Tag::class)->create([
             'name' => 'Test'
         ]);
-        $this->assertDatabaseHas('tags', ['name' => 'test']);
+        $this->assertDatabaseHas('tags', ['name' => 'Test']);
         $this->assertNull($post->tags()->first());
         $post->tags()->sync($post,false);
         $this->assertNotNull($post->tags()->first());
