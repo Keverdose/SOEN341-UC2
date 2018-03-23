@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @extends('layouts.main')
 <style type = "text/css">
     .avatar{
@@ -6,6 +7,10 @@
             max-width:50px;
             }
 </style>
+=======
+@extends('layouts.app')
+
+>>>>>>> parent of 5148e96... Merge branch 'master' into 69-Open-Post-Page-Filter
 =======
 @extends('layouts.app')
 
