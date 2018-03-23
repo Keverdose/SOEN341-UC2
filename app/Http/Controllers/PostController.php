@@ -22,37 +22,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
-        
+    public function index($status) {
 
-            $select_status = $request->get('Status');
-            $select_categ = $request->get('Category');
-            
-            if ($select_status == 'All' || $select_status == NULL) {
-                if ($select_categ == 'All'|| $select_categ == NULL) {
-                    return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')->get(),
-                                                                        'categories' => Category::all()]);    
-                }
-                else {
-                    return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
-                                                                        ->where('category_id', $select_categ)
-                                                                        ->get(),
-                                                                        'categories' => Category::all()]);
-                }
-            }
-            if ($select_categ == 'All') {
-                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
-                                                                    ->where('solved', $select_status)
-                                                                    ->get(),
-                                                                    'categories' => Category::all()]);    
-            }
-            else {
-                return view('posts.list_posts', ['posts' => Post::orderBy('created_at','DESC')
-                                                                    ->where('solved', $select_status)
-                                                                    ->where('category_id', $select_categ)
-                                                                    ->get(),
-                                                                    'categories' => Category::all()]);
-            }
+  
+
+        if ( $status == 'open') {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', FALSE)]);
+        }
+        else {
+            return view('posts.list_posts', ['posts' => Post::all()->whereIn('solved', TRUE)]);
+        }
     }
 
     /**
@@ -121,9 +100,7 @@ class PostController extends Controller
      */
     public function search(Request $request) {
         $request->get('search');
-        $results = Post::orderBy('created_at','DESC')
-                            ->where('body', 'like', '%' . $request->get('search') . '%')
-                            ->get();
+        $results = Post::where('body', 'like', '%' . $request->get('search') . '%')->get();
 
         return view('posts.posts_search', ['posts' => $results]);
     }

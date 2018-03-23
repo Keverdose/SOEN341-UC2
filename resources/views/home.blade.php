@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 <style type = "text/css">
     .avatar{
             border-radius: 50%;
