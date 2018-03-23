@@ -84,7 +84,7 @@
 
 
         <?php
-        if(sizeof($posts)== 0){
+        if(sizeof($comments)== 0){
             echo '<h4>No comments available</h4>';
         }
         ?>
