@@ -1,4 +1,4 @@
-@extends('layouts.main') @section('content')
+ @extends('layouts.app') @section('content')
 
 <div class="container">
     <div><small>By {{ $comment->user->fullName() }}</small></div>

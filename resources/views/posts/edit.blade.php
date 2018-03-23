@@ -1,4 +1,4 @@
-@extends('layouts.main') @section('content')
+@extends('layouts.app') @section('content')
 
 <div class="container">
     <div><small>By {{ $post->user->fullName() }}</small></div>
