@@ -7,7 +7,7 @@
 
         <div class="form-group">
             <label for="" class="function-sub">Title</label>
-            <input type="text" class="form-control form--width" name="title" required>
+            <input type="text" class="form-control form--width" name="title" maxlength="50" required>
         </div>
         <div class="form-group">
             <label for="tags" class="function-sub">Tags</label>
