@@ -13,7 +13,7 @@ class UserTest extends TestCase
 {
     use DatabaseMigrations;
     /**
-     * A basic test example.
+     * A basic test for the user.
      *
      * @return void
      */
@@ -26,19 +26,4 @@ class UserTest extends TestCase
         $this->assertEquals($user->fullName(), 'Bob Marley');
     }
 
-    /**
-     * Testing for Post creation
-     *
-     * @return void
-     */
-    public function test_post_creation(){
-        factory(Post::class)->create([
-            'title' => 'test title',
-            'body' => 'test body',
-            'category_id' => 1,
-            'solved' => FALSE
-        ]);
-
-        $this->assertDatabaseHas('posts', ['body' => 'test body']);
-    }
 }

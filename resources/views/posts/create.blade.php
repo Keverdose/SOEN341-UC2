@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('stylesheets') {!! Html::style('css/select2.min.css') !!} @endsection @section('content')
+@extends('layouts.main') @section('stylesheets') {!! Html::style('css/select2.min.css') !!} @endsection @section('content')
 <div class="container wrap-rob">
     <h2 class="function-title">Create Your Post</h2>
 

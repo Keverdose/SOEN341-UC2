@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.main') @section('content')
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 

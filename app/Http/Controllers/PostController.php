@@ -106,11 +106,60 @@ class PostController extends Controller
      */
     public function show(Post $post) {
         $id = $post->increment('view_count');
-        $array = [
-            "view_count" => $id,];
 
-        $post->update($array);
-        return view('posts.show', ['post' => $post]);
+        $initial_related = Post::all()->whereIn('category_id', $post->category_id)
+                                        ->whereNotIn('id', $post->id);
+        
+        if (count($initial_related) != 0){
+            /**
+             * Count the number of matches per tag related to the showing post
+             * against all posts in the same category
+             */
+
+            $matches = array();
+            foreach($post->tags as $tag){
+                foreach($initial_related as $querried_post){
+                    $quer_tags = $querried_post->tags->pluck('id')->toArray();
+                    if(in_array($tag->id, $quer_tags)){
+                        array_push($matches, $querried_post->id);  
+                    }
+                }
+            }
+            
+            /**
+             * Create a 2-D array and sort it in terms
+             * of which post had the most amount of common posts
+             * as well as views/20
+             */
+            $two_d_relevance = array();
+            
+            foreach($initial_related as $related_post)
+            {
+                array_push($two_d_relevance, array($related_post->id,count(array_keys($matches, $related_post->id))
+                                                                    +($related_post->view_count/20)));
+            }
+            
+            usort($two_d_relevance, function($a, $b) {
+                return $retval = $b[1] <=> $a[1];
+            });
+
+            /**
+             * Transfer the 2-D array into 1-D array containing
+             * the post id's in order of relevance
+             */
+            $ordered_post_ids = array();
+            for ($x=0; $x<count($initial_related); $x++)
+            {
+                array_push($ordered_post_ids, $two_d_relevance[$x][0]);
+            }
+
+            $sorted_posts = Post::whereIn('id', $ordered_post_ids)
+                            ->orderBy(DB::raw('FIELD(`id`, '.implode(',', $ordered_post_ids).')'))
+                            ->get();
+
+            return view('posts.show', ['post' => $post, 'related' => $sorted_posts]);
+        }
+        else return view('posts.show', ['post' => $post, 'related' => NULL]);
     }
 
     /**
