@@ -96,6 +96,12 @@ body {
     border-color: goldenrod;
 }
 
+.btn-apply{
+  margin-top: 5px;
+  margin-left: 15px;
+  width: 100px;
+}
+
 .container {
     overflow: hidden;
 }
@@ -251,7 +257,7 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-    width: 400px !important;
+    width: 250px !important;
     background-color: #fff;
     border-color: goldenrod;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
@@ -307,11 +313,15 @@ input[type=search]:focus {
 }
 
 .image_water {
-    width: 500px;
-    height: 285px;
-    margin-right: 80px;
-    border: 10px solid;
-    border-style: ridge;
+    width: 550px;
+    height: 335px;
+    margin-left: 150px;
+    border-width: 15px;
+    border-style: solid;
+    -webkit-border-image: -webkit-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, darkred, rgba(0, 0, 0, 0)) 1 100%;
 }
 
 .form-control:focus {
@@ -338,8 +348,8 @@ input[type=search]:focus {
 #profile{
     font-size: large;
     position: relative;left:10%;
-}     
-                        
+}
+
 
 .picture{
     border-radius: 150%;
