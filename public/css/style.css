@@ -96,10 +96,10 @@ body {
     border-color: goldenrod;
 }
 
-.btn-apply{
-  margin-top: 5px;
-  margin-left: 15px;
-  width: 100px;
+.btn-apply {
+    margin-top: 5px;
+    margin-left: 15px;
+    width: 100px;
 }
 
 .container {
@@ -238,7 +238,6 @@ body {
     font-weight: 300;
 }
 
-
 .top-middle {
     position: absolute;
     right: 700px;
@@ -253,18 +252,17 @@ input[type=search] {
     border-radius: 10em;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
-    transition: all .5s;
+    transition: all 2s;
 }
 
 input[type=search]:focus {
     width: 250px !important;
     background-color: #fff;
-    border-color: goldenrod;
+    border-color: goldenrod !important;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
-
 
 .tags {
     font-size: 12px;
@@ -360,12 +358,11 @@ input[type=search]:focus {
 #profile{
 
     font-size: 35px;
-    
+
     position: relative;
 }
 
-
-.picture{
+.picture {
     border-radius: 150%;
     margin-right: 25px;
     width:150px;
@@ -379,13 +376,12 @@ input[type=search]:focus {
     left: 40%;
     font: italic bold 12px/30px Georgia, serif}
 
-#user_name{
+#user_name {
     font-size: large;
 }
 
-
-#about_me{
-    background-color:white;
+#about_me {
+    background-color: white;
     border-color: white;
 }
 
@@ -398,10 +394,13 @@ a:hover {
 a {
     color: darkgoldenrod;
     text-decoration: none;
-
 }
 
 #sidebar {
     padding-top: 120px;
     ;
+}
+
+.picture-nav-positioning {
+    margin-top: 5px !important;
 }
