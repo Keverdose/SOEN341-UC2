@@ -18,8 +18,8 @@
      	 <div class = "panel panel-default">
      	 	 <div class = "panel-heading">Profile</div>
                 <div class = "panel-body">
-     	 	 
-  
+
+
 
 
                      <form class="form-horizontal" method="POST" action="{{ route('addProfile') }}"enctype = "multipart/form-data">
@@ -79,10 +79,10 @@
 
 
 
-                         <div class="form-group{{ $errors->has('about_me') ? ' has-error' : '' }}"> 
+                         <div class="form-group{{ $errors->has('about_me') ? ' has-error' : '' }}">
                            <label for="about_me" class="col-md-4 control-label">About me
                             </label>
-                              <div class="col-md-6"> 
+                              <div class="col-md-6">
                                 <pre><textarea name="about_me" id="about_me" cols="30" rows="10" class="form-control" maxlength="400" wrap="hard">{{$user->about_me}}</textarea></pre>
                                 @if ($errors->has('about_me'))
                                     <span class="help-block">
@@ -93,15 +93,15 @@
                          </div>
 
 
-               
+
 
                         <div class = "form-group">
                           <div class = "col-md-8 col-md-offset-4">
-                            <button type = "submit" class ="btn btn-primary">Submit</button>
+                            <button type = "submit" class ="btn btn-conu">Submit</button>
                          </div>
                        </div>
                     </form>
-     	 
+
      	       </div>
          </div>
     </div>

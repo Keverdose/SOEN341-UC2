@@ -3,16 +3,8 @@
 
 <div class="container ">
     <div class="col-sm-11">
-  
 
-                 <ul class = "user_stats" style="list-style-type:none">  
-                    <li>Member since: {{$time}}</li>
-                    <li>{{$user->view_count}} profile views</li>
-                    <li>Number of posts: {{count($posts)}}</li>
-                    <li>Number of answers: {{count($comments)}}</li>
-                 </ul>
-
-
+                <div class =" user_info">
                     @if($user->id == Auth::user()->id)
                     <a href= "{{ route('editProfile') }}"id= profile>Edit Profile</a>
                     @endif
@@ -25,14 +17,25 @@
                     @endif
 
 
-                  <ul class = user_info style="list-style-type:none">
+                  <ul style="list-style-type:none">
                     <li id = user_name>User name:  {{$user->user_name}}</li>
                     <li id = title>Title:  {{$user->title}}</li>
                     <li>About me:</li>
                     <li><pre id="about_me">{{$user->about_me}}</pre></li>
+                 </ul></div>
+
+
+                 <div class = "user_stats">
+                  <p id="activity">Activity</p>
+                 <ul style="list-style-type:none">
+                    <li>Profile created: {{$time}}</li>
+                    <li>{{$user->view_count}} profile views</li>
+                    <li>Number of posts: {{count($posts)}}</li>
+                    <li>Number of answers: {{count($comments)}}</li>
                  </ul>
-          
+               </div>
+
+
    </div>
 </div>
-
-@endsection
+  @endsection

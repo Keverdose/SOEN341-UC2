@@ -332,7 +332,8 @@ input[type=search]:focus {
 }
 
 .avatars{
-  position: relative;bottom: 12px;
+  position: relative;
+  bottom: 12px;
   border-radius:100%;
   width:40px;
   height:40px;
@@ -340,25 +341,42 @@ input[type=search]:focus {
 
 
 .user_stats{
-    position: relative;left: 90%;
-    top:100px;
-    font-family: "Times New Roman", Times, serif;
+    position: relative;
+    color: black;
+    margin-top: 100px;
+    margin-left: 40px;
+    font-size: 15px;
+    left: 40%;
+    font-family: Georgia;
+}
+#activity{
+  color: goldenrod;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 #profile{
-    font-size: large;
-    position: relative;left:10%;
+
+    font-size: 35px;
+    
+    position: relative;
 }
 
 
 .picture{
     border-radius: 150%;
+    margin-right: 25px;
     width:150px;
     height:150px;
 }
 
 .user_info{
-    position: relative;left: 10%;
+    position: relative;
+    color: black;
+    margin-top: 75px;
+    left: 40%;
     font: italic bold 12px/30px Georgia, serif}
 
 #user_name{
