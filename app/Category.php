@@ -9,9 +9,10 @@ class Category extends Model
     protected $primaryKey = 'id';
     protected $table = 'categories';
     protected $fillable = [
-        'name'
+        'name',
     ];
-    public function posts(){
-    	return $this->hasMany(Post::class);
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

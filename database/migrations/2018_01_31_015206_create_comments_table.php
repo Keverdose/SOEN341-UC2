@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCommentsTable extends Migration
 {
@@ -11,10 +11,11 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::create('comment', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
+            $table->integer('postId')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('user_name')->nullable();
@@ -23,10 +24,9 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
 
-
-        Schema::table('comment',function($table){	
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');	
-            $table->foreign('user_id')->references('id')->on('users');	
+        Schema::table('comment', function ($table) {
+            $table->foreign('postId')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**
@@ -34,10 +34,11 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::table('comment', function (Blueprint $table) {
-          $table->dropForeign(['user_id']);
-          $table->dropForeign(['post_id']);
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['postId']);
         });
         Schema::dropIfExists('comment');
     }

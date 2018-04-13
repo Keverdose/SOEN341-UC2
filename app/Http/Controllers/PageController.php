@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use app\User;
-use App\Post;
 use App\Comment;
+use App\Post;
+use app\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -15,7 +14,8 @@ class PageController extends Controller
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -24,8 +24,12 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user_act() {
-        return view('user_activity', ['posts' => Post::all()->whereIn('user_id', [Auth::id()])], 
-                                     ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]);
+    public function userAct()
+    {
+        return view(
+            'user_activity',
+            ['posts' => Post::all()->whereIn('user_id', [Auth::id()])],
+            ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]
+        );
     }
 }

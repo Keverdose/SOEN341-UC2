@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\SocialAccount;
 use App\User;
 use Laravel\Socialite\Contracts\User as ProviderUser;
@@ -16,21 +17,20 @@ class SocialAccountService
         if ($account) {
             return $account->user;
         } else {
-
             $account = new SocialAccount([
                 'provider_user_id' => $providerUser->getId(),
-                'provider' => $provider
+                'provider' => $provider,
             ]);
 
             $user = User::whereEmail($providerUser->getEmail())->first();
 
             if (!$user) {
-                $name_array = explode(' ', trim($providerUser->getName()));
+                $nameArray = explode(' ', trim($providerUser->getName()));
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
-                    'first_name' => $name_array[0],
-                    'last_name' => $name_array[1],
-                    'password' => md5(rand(1,10000)),
+                    'first_name' => $nameArray[0],
+                    'last_name' => $nameArray[1],
+                    'password' => md5(rand(1, 10000)),
                 ]);
             }
 
