@@ -100,7 +100,7 @@
                           WIDTH: 100%;
                           display: block;
                           text-align: center;">
-                        <div class="titleOfComment"><a href="{{route('post.show', ['post' => $comment->post_id])}}">{{$comment->post->title}}</a></div>
+                        <div class="titleOfComment"><a href="{{route('post.show', ['post' => $comment->postId])}}">{{$comment->post->title}}</a></div>
                         <div class="commentContent">{{ $comment->comment }}</div>
 
                         </span>

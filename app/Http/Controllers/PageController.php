@@ -24,9 +24,12 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user_act()
+    public function userAct()
     {
-        return view('user_activity', ['posts' => Post::all()->whereIn('user_id', [Auth::id()])],
-            ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]);
+        return view(
+            'user_activity',
+            ['posts' => Post::all()->whereIn('user_id', [Auth::id()])],
+            ['comments' => Comment::all()->whereIn('user_id', [Auth::id()])]
+        );
     }
 }

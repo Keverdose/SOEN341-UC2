@@ -11,7 +11,9 @@
 |
  */
 
-Route::get('/', function () {return view('welcome');})->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 Auth::routes();
 
@@ -35,7 +37,7 @@ Route::post('comment/{comment}/destroyed', 'CommentController@destroy')->name('c
 Route::post('post/{post}/deleted', 'PostController@delete')->name('post.delete');
 Route::post('post/{post}/destroyed', 'PostController@destroy')->name('post.destroy');
 
-Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
+Route::get('/{user_id}/userActivity', 'PageController@userAct')->name('user.activity');
 
 Route::group(['prefix' => 'post', 'middleware' => ['auth']], function () {
     Route::get('/query', 'PostController@search')->name('post.search');
@@ -43,8 +45,8 @@ Route::group(['prefix' => 'post', 'middleware' => ['auth']], function () {
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
 
-    Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
-    Route::get('/{comment}/comment_answer', 'CommentController@mark_answer')->name('comment.answer');
+    Route::get('/{post}/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
+    Route::get('/{comment}/comment_answer', 'CommentController@markAnswer')->name('comment.answer');
 
     Route::get('/{comment}/comment_delete', 'CommentController@delete')->name('comment.delete');
     Route::get('/{comment}/comment_destroy', 'CommentController@destroy')->name('comment.destroy');

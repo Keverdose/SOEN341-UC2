@@ -43,9 +43,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($comment_id)
     {
-
+        $comment = Comment::find($comment_id);
         return view('comments.edit', ['comment' => $comment]);
     }
 
@@ -67,9 +67,9 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $comment = Comment::find($id);
-        $post_id = $comment->post->id;
+        $postId = $comment->post->id;
         $comment->delete();
-        return redirect()->route('post.show', $post_id);
+        return redirect()->route('post.show', $postId);
     }
 
     /**
@@ -78,11 +78,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function mark_answer($id)
+    public function markAnswer($id)
     {
         $comment = Comment::find($id);
-        $post_id = $comment->post->id;
-        $post = Post::find($post_id);
+        $postId = $comment->post->id;
+        $post = Post::find($postId);
 
         $comment->best_answer = true;
         $comment->save();
@@ -91,7 +91,7 @@ class CommentController extends Controller
         $post->title = '[SOLVED]' . $post->title;
         $post->save();
 
-        return redirect()->route('post.show', $post_id);
+        return redirect()->route('post.show', $postId);
     }
 
     /**
@@ -103,7 +103,7 @@ class CommentController extends Controller
     {
         $comment->update($request->all());
 
-        return redirect(route('post.show', ['post' => $comment->post_id]));
+        return redirect(route('post.show', ['post' => $comment->postId]));
     }
 
     public function vote(Comment $comment, $updown)

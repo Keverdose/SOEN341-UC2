@@ -29,8 +29,7 @@ class ProfileController extends Controller
         $count = 0;
 
         foreach ($comments as $comment) {
-
-            $post = Post::where('id', $comment->post_id)->get();
+            $post = Post::where('id', $comment->postId)->get();
             $postss = $post{0};
 
             if ($postss->user_id == $comment->user_id) {
@@ -38,13 +37,14 @@ class ProfileController extends Controller
             }
 
             $count++;
-
         }
 
         $clientCreation = $profile->created_at;
         $time = Carbon::createFromTimeStamp(strtotime($clientCreation))->diffForHumans();
-        return view('profile.profile')->with('time', $time)->with('user', $profile)->with('posts', $posts)->with('comments', $comments);
-
+        return view('profile.profile')->with('time', $time)
+            ->with('user', $profile)
+            ->with('posts', $posts)
+            ->with('comments', $comments);
     }
 
     public function editProfile()
@@ -80,13 +80,13 @@ class ProfileController extends Controller
 
         $profiles->save();
         $userName = DB::table('users')->where('id', Auth::user()->id)->first();
-        $comments = DB::table('comment')->where('user_id', Auth::user()->id)->update(['user_name' => $userName->user_name]);
+        $comments = DB::table('comment')
+            ->where('user_id', Auth::user()->id)->update(['user_name' => $userName->user_name]);
 
         if ($profiles->user_name != null) {
             return redirect('/home')->with('response', 'profile was succesfully updated');
         } else {
             return redirect('/home')->with('response', 'Profile Added Successfully');
         }
-
     }
 }

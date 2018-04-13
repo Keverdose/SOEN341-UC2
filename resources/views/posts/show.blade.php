@@ -79,7 +79,7 @@
 
             <p>Last Edit: {{mb_substr($comment->updated_at, 0, 10)}}</p>
             @if(Auth::id()==$comment->user_id)
-            <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Edit</a>
+            <a href="{{ route('comment.edit', ['post' => $post->id, 'comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Edit</a>
             <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn  btn-conu btn-xs btn-info pull-left edit-delete">Delete</a> @endif @if(Auth::id()==$post->user_id and $post->solved==FALSE)
             <a href="{{ route('comment.answer', ['comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Best Answer</a> @endif
             <br>

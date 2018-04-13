@@ -25,29 +25,29 @@ class PostController extends Controller
     public function index(Request $request)
     {
 
-        $select_status = $request->get('Status');
-        $select_categ = $request->get('Category');
+        $selectStatus = $request->get('Status');
+        $selectCateg = $request->get('Category');
 
-        if ($select_status == 'All' || $select_status == null) {
-            if ($select_categ == 'All' || $select_categ == null) {
+        if ($selectStatus == 'All' || $selectStatus == null) {
+            if ($selectCateg == 'All' || $selectCateg == null) {
                 return view('posts.list_posts', ['posts' => Post::orderBy('created_at', 'DESC')->get(),
                     'categories' => Category::all()]);
             } else {
                 return view('posts.list_posts', ['posts' => Post::orderBy('created_at', 'DESC')
-                        ->where('category_id', $select_categ)
+                        ->where('category_id', $selectCateg)
                         ->get(),
                     'categories' => Category::all()]);
             }
         }
-        if ($select_categ == 'All') {
+        if ($selectCateg == 'All') {
             return view('posts.list_posts', ['posts' => Post::orderBy('created_at', 'DESC')
-                    ->where('solved', $select_status)
+                    ->where('solved', $selectStatus)
                     ->get(),
                 'categories' => Category::all()]);
         } else {
             return view('posts.list_posts', ['posts' => Post::orderBy('created_at', 'DESC')
-                    ->where('solved', $select_status)
-                    ->where('category_id', $select_categ)
+                    ->where('solved', $selectStatus)
+                    ->where('category_id', $selectCateg)
                     ->get(),
                 'categories' => Category::all()]);
         }
@@ -76,19 +76,17 @@ class PostController extends Controller
         $post->category_id = $request->get('Category');
         $post->solved = false;
         $tags = Tag::All()->pluck('name')->toArray();
-        $tag_list = $request->get('tags');
+        $tagList = $request->get('tags');
         $newTagAdded = [];
         Auth::user()->posts()->save($post);
-        if (count($tag_list) > 0) {
-            foreach ($tag_list as $tag) {
+        if (count($tagList) > 0) {
+            foreach ($tagList as $tag) {
                 if (!(in_array($tag, $tags))) {
                     $newTag = new Tag();
                     $newTag->name = $tag;
                     $newTag->save();
-
                 }
                 array_push($newTagAdded, Tag::where('name', '=', $tag)->first()->id);
-
             }
         }
 
@@ -108,10 +106,10 @@ class PostController extends Controller
     {
         $id = $post->increment('view_count');
 
-        $initial_related = Post::all()->whereIn('category_id', $post->category_id)
+        $initialRelated = Post::all()->whereIn('category_id', $post->category_id)
             ->whereNotIn('id', $post->id);
 
-        if (count($initial_related) != 0) {
+        if (count($initialRelated) != 0) {
             /**
              * Count the number of matches per tag related to the showing post
              * against all posts in the same category
@@ -119,10 +117,10 @@ class PostController extends Controller
 
             $matches = array();
             foreach ($post->tags as $tag) {
-                foreach ($initial_related as $querried_post) {
-                    $quer_tags = $querried_post->tags->pluck('id')->toArray();
-                    if (in_array($tag->id, $quer_tags)) {
-                        array_push($matches, $querried_post->id);
+                foreach ($initialRelated as $querriedPost) {
+                    $querTags = $querriedPost->tags->pluck('id')->toArray();
+                    if (in_array($tag->id, $querTags)) {
+                        array_push($matches, $querriedPost->id);
                     }
                 }
             }
@@ -132,14 +130,14 @@ class PostController extends Controller
              * of which post had the most amount of common posts
              * as well as views/20
              */
-            $two_d_relevance = array();
+            $twoDRelevance = array();
 
-            foreach ($initial_related as $related_post) {
-                array_push($two_d_relevance, array($related_post->id, count(array_keys($matches, $related_post->id))
-                     + ($related_post->view_count / 20)));
+            foreach ($initialRelated as $relatedPost) {
+                array_push($twoDRelevance, array($relatedPost->id, count(array_keys($matches, $relatedPost->id))
+                     + ($relatedPost->view_count / 20)));
             }
 
-            usort($two_d_relevance, function ($a, $b) {
+            usort($twoDRelevance, function ($a, $b) {
                 return $retval = $b[1] <=> $a[1];
             });
 
@@ -147,27 +145,26 @@ class PostController extends Controller
              * Transfer the 2-D array into 1-D array containing
              * the post id's in order of relevance
              */
-            $ordered_post_ids = array();
+            $orderedPostIds = array();
 
-            if (count($initial_related) < 4) {
-                $count = count($initial_related);
+            if (count($initialRelated) < 4) {
+                $count = count($initialRelated);
             } else {
                 $count = 4;
             }
 
             for ($x = 0; $x < $count; $x++) {
-                array_push($ordered_post_ids, $two_d_relevance[$x][0]);
+                array_push($orderedPostIds, $twoDRelevance[$x][0]);
             }
 
-            $sorted_posts = Post::whereIn('id', $ordered_post_ids)
-                ->orderBy(DB::raw('FIELD(`id`, ' . implode(',', $ordered_post_ids) . ')'))
+            $sortedPosts = Post::whereIn('id', $orderedPostIds)
+                ->orderBy(DB::raw('FIELD(`id`, ' . implode(',', $orderedPostIds) . ')'))
                 ->get();
 
-            return view('posts.show', ['post' => $post, 'related' => $sorted_posts]);
+            return view('posts.show', ['post' => $post, 'related' => $sortedPosts]);
         } else {
             return view('posts.show', ['post' => $post, 'related' => null]);
         }
-
     }
 
     /**
@@ -205,7 +202,7 @@ class PostController extends Controller
         $post->title = str_replace("[SOLVED]", "", $post->title);
         $post->save();
 
-        Comment::where('post_id', $post->id)
+        Comment::where('postId', $post->id)
             ->where('best_answer', true)
             ->update(['best_answer' => false]);
 
@@ -264,5 +261,4 @@ class PostController extends Controller
 
         return back();
     }
-
 }

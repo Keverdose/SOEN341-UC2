@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCategoriesTable extends Migration
 {
@@ -20,35 +20,35 @@ class CreateCategoriesTable extends Migration
         });
 
         DB::table('categories')->insert(
-        array(
-            'name' => 'Java'
-        )
-    );
-         DB::table('categories')->insert(
-        array(
-            'name' => 'C++'
-        )
-    );
-          DB::table('categories')->insert(
-        array(
-            'name' => 'PHP'
-        )
-    );
-           DB::table('categories')->insert(
-        array(
-            'name' => 'C#'
-        )
-    );
-            DB::table('categories')->insert(
-        array(
-            'name' => 'Laravel'
-        )
-    );
-             DB::table('categories')->insert(
-        array(
-            'name' => 'JQuery'
-        )
-    );
+            array(
+                'name' => 'Java',
+            )
+        );
+        DB::table('categories')->insert(
+            array(
+                'name' => 'C++',
+            )
+        );
+        DB::table('categories')->insert(
+            array(
+                'name' => 'PHP',
+            )
+        );
+        DB::table('categories')->insert(
+            array(
+                'name' => 'C#',
+            )
+        );
+        DB::table('categories')->insert(
+            array(
+                'name' => 'Laravel',
+            )
+        );
+        DB::table('categories')->insert(
+            array(
+                'name' => 'JQuery',
+            )
+        );
     }
 
     /**
