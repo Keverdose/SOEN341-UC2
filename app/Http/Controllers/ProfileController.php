@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $count = 0;
 
         foreach ($comments as $comment) {
-            $post = Post::where('id', $comment->postId)->get();
+            $post = Post::where('id', $comment->post_id)->get();
             $postss = $post{0};
 
             if ($postss->user_id == $comment->user_id) {

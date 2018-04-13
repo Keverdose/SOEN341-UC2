@@ -202,7 +202,7 @@ class PostController extends Controller
         $post->title = str_replace("[SOLVED]", "", $post->title);
         $post->save();
 
-        Comment::where('postId', $post->id)
+        Comment::where('post_id', $post->id)
             ->where('best_answer', true)
             ->update(['best_answer' => false]);
 
@@ -234,7 +234,8 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->tags()->detach();
         $post->delete();
-        return view('posts.list_posts', ['posts' => Post::all()]);
+        return redirect(route('posts.list'));
+        //return view('posts.list_posts', ['posts' => Post::all()]);
     }
 
     /**

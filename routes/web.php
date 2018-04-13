@@ -45,7 +45,7 @@ Route::group(['prefix' => 'post', 'middleware' => ['auth']], function () {
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
 
-    Route::get('/{post}/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
+    Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
     Route::get('/{comment}/comment_answer', 'CommentController@markAnswer')->name('comment.answer');
 
     Route::get('/{comment}/comment_delete', 'CommentController@delete')->name('comment.delete');

@@ -43,9 +43,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($comment_id)
+    public function edit($commentId)
     {
-        $comment = Comment::find($comment_id);
+        $comment = Comment::find($commentId);
         return view('comments.edit', ['comment' => $comment]);
     }
 
@@ -103,7 +103,7 @@ class CommentController extends Controller
     {
         $comment->update($request->all());
 
-        return redirect(route('post.show', ['post' => $comment->postId]));
+        return redirect(route('post.show', ['post' => $comment->post_id]));
     }
 
     public function vote(Comment $comment, $updown)
