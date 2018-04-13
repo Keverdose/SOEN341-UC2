@@ -1,6 +1,4 @@
-@extends('layouts.single_post') 
-
-@section('content')
+@extends('layouts.single_post') @section('content')
 <div class="container ">
     <h2 class=" function-title">{{ $post->title }}</h2>
     @if($post->user->user_name==null)
@@ -9,9 +7,9 @@
     @else
     <div><small>By <a href="{{route('profile', ['profile'=>$post->user_id])}}">{{$post->user->user_name}}
     </a></small></div>
-    @endif              
+    @endif
     <hr>
-    
+
     <div class="col-sm-1">
         <form action="{{route('answer.vote', ['post' => $post->id, 'vote' => 'up'])}}">
             {{csrf_field()}}
@@ -81,7 +79,8 @@
             @if(Auth::id()==$comment->user_id)
             <a href="{{ route('comment.edit', ['comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Edit</a>
             <a href="{{ route('comment.delete', ['comment' => $comment->id])}}" class="btn  btn-conu btn-xs btn-info pull-left edit-delete">Delete</a> @endif @if(Auth::id()==$post->user_id and $post->solved==FALSE)
-            <a href="{{ route('comment.answer', ['comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Best Answer</a> @endif
+            <a href="{{ route('comment.answer', ['comment' => $comment->id])}}" class="btn btn-conu btn-xs btn-info pull-left edit-delete">Best Answer</a> @endif @if(Auth::id()==$comment->user_id and $comment->best_answer==TRUE)
+            <p style="color : green ; font-weight:bold; background: GreenYellow ;" class="btn btn-conu btn-xs btn-info pull-left edit-delete"> Best Answer</p> @endif
             <br>
         </div>
         @endforeach
@@ -163,4 +162,6 @@
     </div>
 
 
-    @endforeach @else There are no related posts @endif @endsection
+    @endforeach @else
+    <p style="margin-left: 150px ; margin-top : -9px; font-weight: bold ;font-size: 20px; font-color: black;
+              text-decoration: underline ">There are no related posts </p>@endif @endsection
