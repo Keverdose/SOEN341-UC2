@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\category;
+use Illuminate\Http\Request;
+
 class CategoryController extends Controller
 {
 
@@ -14,7 +15,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       
 
     }
 
@@ -36,9 +36,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-         $category = new Category($request->all());
-         $category->save();
-         return redirect(route('post.create'));
+        $category = new Category($request->all());
+        $category->save();
+        return redirect(route('post.create'));
     }
 
     /**

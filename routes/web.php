@@ -9,10 +9,9 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {return view('welcome');})->name('home');
-
 
 Auth::routes();
 
@@ -21,10 +20,10 @@ Route::get('/callback/{provider}', 'SocialController@callback')->name('social.ca
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['middleware' => ['auth']], function(){
-    Route::get('/profile/{profile}', 'ProfileController@profile') ->name('profile');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/profile/{profile}', 'ProfileController@profile')->name('profile');
     Route::get('/profile_edit', 'ProfileController@editProfile')->name('editProfile');
-    Route::post('/addProfile', 'ProfileController@addProfile') ->name('addProfile');
+    Route::post('/addProfile', 'ProfileController@addProfile')->name('addProfile');
 });
 
 Route::post('post/{post}/updated', 'PostController@update')->name('post.update');
@@ -38,12 +37,12 @@ Route::post('post/{post}/destroyed', 'PostController@destroy')->name('post.destr
 
 Route::get('/{user_id}/user_activity', 'PageController@user_act')->name('user.activity');
 
-Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
+Route::group(['prefix' => 'post', 'middleware' => ['auth']], function () {
     Route::get('/query', 'PostController@search')->name('post.search');
 
     Route::get('/{post}/post_reopen', 'PostController@reopen')->name('post.reopen');
     Route::get('/{post}/post_edit', 'PostController@edit')->name('post.edit');
-    
+
     Route::get('/{comment}/comment_edit', 'CommentController@edit')->name('comment.edit');
     Route::get('/{comment}/comment_answer', 'CommentController@mark_answer')->name('comment.answer');
 
@@ -63,4 +62,4 @@ Route::group(['prefix' => 'post','middleware' => ['auth']], function () {
 
 Route::post('/posts_list/filtered', 'PostController@index')->name('posts.filter');
 Route::get('/posts_list', 'PostController@index')->name('posts.list');
-Route::post('comments/{post}','CommentController@store')->name('comments.store');
+Route::post('comments/{post}', 'CommentController@store')->name('comments.store');

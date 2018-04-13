@@ -18,18 +18,21 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'comment'
+        'comment',
     ];
 
-       public function post() {
+    public function post()
+    {
         return $this->belongsTo(Post::class);
     }
 
-    function votes() {
+    public function votes()
+    {
         return $this->morphMany(Vote::class, 'voteable');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

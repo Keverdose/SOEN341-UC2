@@ -3,18 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vote extends Model
 {
     protected $fillable = [
         'status',
         'is_upvote',
-        'user_id'
+        'user_id',
     ];
 
     protected $casts = [
-        'is_upvote' => 'boolean'
+        'is_upvote' => 'boolean',
     ];
 
     public function user()

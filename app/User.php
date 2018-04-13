@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -28,13 +28,15 @@ class User extends Authenticatable
     ];
 
     /**
-      * Concats first name and last name together.
-      */
-    public function fullName() {
-      return $this->first_name . ' ' . $this->last_name;
+     * Concats first name and last name together.
+     */
+    public function fullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
-    function posts() {
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
