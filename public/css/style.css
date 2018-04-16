@@ -26,8 +26,8 @@ body {
 
 .top-right {
     position: absolute;
-    right: 10px;
     top: 15px;
+    right: 100px;
 }
 
 .content {
@@ -240,8 +240,8 @@ body {
 
 .top-middle {
     position: absolute;
-    right: 700px;
-    top: 8px;
+    left: 250px;
+    top: 6px;
 }
 
 input[type=search] {
@@ -252,11 +252,11 @@ input[type=search] {
     border-radius: 10em;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
-    transition: all 2s;
+    transition: all 1s;
 }
 
 input[type=search]:focus {
-    width: 250px !important;
+    width: 350px !important;
     background-color: #fff;
     border-color: goldenrod !important;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
@@ -329,16 +329,15 @@ input[type=search]:focus {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px darkred !important;
 }
 
-.avatars{
-  position: relative;
-  bottom: 12px;
-  border-radius:100%;
-  width:40px;
-  height:40px;
+.avatars {
+    position: relative;
+    bottom: 12px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
 }
 
-
-.user_stats{
+.user_stats {
     position: relative;
     color: black;
     margin-top: 100px;
@@ -347,34 +346,34 @@ input[type=search]:focus {
     left: 40%;
     font-family: Georgia;
 }
-#activity{
-  color: goldenrod;
-  text-decoration: underline;
-  font-weight: bold;
-  font-size: 20px;
-  margin-left: 10px;
+
+#activity {
+    color: goldenrod;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
-#profile{
-
+#profile {
     font-size: 35px;
-
     position: relative;
 }
 
 .picture {
     border-radius: 150%;
     margin-right: 25px;
-    width:150px;
-    height:150px;
+    width: 150px;
+    height: 150px;
 }
 
-.user_info{
+.user_info {
     position: relative;
     color: black;
     margin-top: 75px;
     left: 40%;
-    font: italic bold 12px/30px Georgia, serif}
+    font: italic bold 12px/30px Georgia, serif
+}
 
 #user_name {
     font-size: large;
@@ -403,4 +402,27 @@ a {
 
 .picture-nav-positioning {
     margin-top: 5px !important;
+}
+
+.search-nav {
+    padding-top: 7px;
+}
+
+.nav-pic {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.header-pad-rob {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+}
+
+.top-right-pic {
+    position: absolute;
+    top: 15px;
+    right: 19px;
 }
