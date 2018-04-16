@@ -28,7 +28,7 @@
 
 
                         <div class="form-group{{ $errors->has('user_name') ? ' has-error' : '' }}">
-                            <label for="user_name" class="col-md-4 control-label">User Name</label>
+                            <label for="user_name" class="col-md-4 control-label" style="font-weight: bolder;">User Name</label>
 
                             <div class="col-md-6">
                                 <input id="user_name" type="name" class="form-control" name="user_name" maxlength ="12" value= "{{$user->user_name}}">
@@ -46,7 +46,7 @@
 
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">Title</label>
+                            <label for="title" class="col-md-4 control-label" >Title</label>
 
                             <div class="col-md-6">
                                 <input id="title" type="input" class="form-control" name="title" maxlength ="20" value= "{{$user->title}}">
@@ -80,7 +80,7 @@
 
 
                          <div class="form-group{{ $errors->has('about_me') ? ' has-error' : '' }}">
-                           <label for="about_me" class="col-md-4 control-label">About me
+                             <label for="about_me" class="col-md-4 control-label">About me
                             </label>
                               <div class="col-md-6">
                                 <pre><textarea name="about_me" id="about_me" cols="30" rows="10" class="form-control" maxlength="400" wrap="hard">{{$user->about_me}}</textarea></pre>

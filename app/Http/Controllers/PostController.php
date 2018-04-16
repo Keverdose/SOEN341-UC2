@@ -147,10 +147,10 @@ class PostController extends Controller
              */
             $orderedPostIds = array();
 
-            if (count($initialRelated) < 4) {
+            if (count($initialRelated) < 3) {
                 $count = count($initialRelated);
             } else {
-                $count = 4;
+                $count = 3;
             }
 
             for ($x = 0; $x < $count; $x++) {

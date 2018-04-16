@@ -345,7 +345,7 @@ input[type=search]:focus {
     margin-left: 40px;
     font-size: 15px;
     left: 40%;
-    font-family: Georgia;
+    font-family: serif;
 }
 #activity{
   color: goldenrod;
@@ -374,13 +374,15 @@ input[type=search]:focus {
     color: black;
     margin-top: 75px;
     left: 40%;
-    font: italic bold 12px/30px Georgia, serif}
+    font: 18px/30px serif}
 
 #user_name {
     font-size: large;
 }
 
 #about_me {
+    margin-top: -10px;
+    font-family: serif;
     background-color: white;
     border-color: white;
 }
