@@ -30,11 +30,7 @@
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
 
 
-                <a href="{{url('profile', Auth::user())}}">
-                    <?php $user = Auth::user();?> @if(!empty($user->profile_pic))
-                    <img src="{{$user->profile_pic}}" class="avatars" alt=""> @else
-                    <img src=" {{url( 'images/avatar.jpg')}} " class="avatars " alt=" "> @endif
-                </a>
+
 
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -46,6 +42,12 @@
                 <a href="{{ route( 'register') }} ">Register</a> @endauth
 
             </div>
+            <div class="top-right-pic linkstwo">
+                <a href="{{url('profile', Auth::user())}}">
+                    <?php $user = Auth::user();?> @if(!empty($user->profile_pic))
+                    <img src="{{$user->profile_pic}}" class="avatars" alt=""> @else
+                    <img src=" {{url( 'images/avatar.jpg')}} " class="avatars " alt=" "> @endif
+                </a>
+            </div>
         </div>
-    </div>
 </nav>

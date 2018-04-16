@@ -26,8 +26,8 @@ body {
 
 .top-right {
     position: absolute;
-    right: 10px;
     top: 15px;
+    right: 100px;
 }
 
 .content {
@@ -240,8 +240,8 @@ body {
 
 .top-middle {
     position: absolute;
-    right: 700px;
-    top: 8px;
+    left: 250px;
+    top: 6px;
 }
 
 input[type=search] {
@@ -252,11 +252,11 @@ input[type=search] {
     border-radius: 10em;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
-    transition: all 2s;
+    transition: all 1s;
 }
 
 input[type=search]:focus {
-    width: 250px !important;
+    width: 350px !important;
     background-color: #fff;
     border-color: goldenrod !important;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
@@ -405,4 +405,27 @@ a {
 
 .picture-nav-positioning {
     margin-top: 5px !important;
+}
+
+.search-nav {
+    padding-top: 7px;
+}
+
+.nav-pic {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.header-pad-rob {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+}
+
+.top-right-pic {
+    position: absolute;
+    top: 15px;
+    right: 19px;
 }
