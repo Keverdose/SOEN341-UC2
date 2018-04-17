@@ -29,7 +29,7 @@
         </div>
 
         <!-- sidebar content -->
-        <div id="sidebar" class=" col-md-6">
+        <div id="sidebar" class=" ml-3 col-md-6">
             @include('includes.sidebar')
         </div>
 

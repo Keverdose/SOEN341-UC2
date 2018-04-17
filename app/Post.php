@@ -9,19 +9,20 @@ class Post extends Model
 {
     use Voteable;
     /**
-      * Fillable attributes
-      */
+     * Fillable attributes
+     */
     protected $fillable = [
-        'title', 'body'
+        'title', 'body',
     ];
 
     protected $with = [
-        'user'
+        'user',
     ];
 
     public $timestamps = true;
 
-    function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -30,14 +31,17 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function content() {
-          return $this->body;
+    public function content()
+    {
+        return $this->body;
     }
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
-    
-    function tags() {
+
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class);
     }
 }

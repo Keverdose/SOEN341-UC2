@@ -26,8 +26,8 @@ body {
 
 .top-right {
     position: absolute;
-    right: 10px;
     top: 15px;
+    right: 100px;
 }
 
 .content {
@@ -94,6 +94,12 @@ body {
     color: darkred;
     background-color: #fff;
     border-color: goldenrod;
+}
+
+.btn-apply {
+    margin-top: 5px;
+    margin-left: 15px;
+    width: 100px;
 }
 
 .container {
@@ -232,11 +238,10 @@ body {
     font-weight: 300;
 }
 
-
 .top-middle {
     position: absolute;
-    right: 700px;
-    top: 8px;
+    left: 250px;
+    top: 6px;
 }
 
 input[type=search] {
@@ -247,18 +252,17 @@ input[type=search] {
     border-radius: 10em;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
-    transition: all .5s;
+    transition: all 1s;
 }
 
 input[type=search]:focus {
-    width: 400px !important;
+    width: 350px !important;
     background-color: #fff;
-    border-color: goldenrod;
+    border-color: goldenrod !important;
     -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
-
 
 .tags {
     font-size: 12px;
@@ -307,11 +311,15 @@ input[type=search]:focus {
 }
 
 .image_water {
-    width: 500px;
-    height: 285px;
-    margin-right: 80px;
-    border: 10px solid;
-    border-style: ridge;
+    width: 550px;
+    height: 335px;
+    margin-left: 150px;
+    border-width: 15px;
+    border-style: solid;
+    -webkit-border-image: -webkit-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(darkred, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, darkred, rgba(0, 0, 0, 0)) 1 100%;
 }
 
 .form-control:focus {
@@ -322,7 +330,8 @@ input[type=search]:focus {
 }
 
 .avatars{
-  position: relative;bottom: 12px;
+  position: relative;
+  bottom: 12px;
   border-radius:100%;
   width:40px;
   height:40px;
@@ -330,34 +339,51 @@ input[type=search]:focus {
 
 
 .user_stats{
-    position: relative;left: 90%;
-    top:100px;
-    font-family: "Times New Roman", Times, serif;
+    position: relative;
+    color: black;
+    margin-top: 100px;
+    margin-left: 40px;
+    font-size: 15px;
+    left: 40%;
+    font-family: serif;
+}
+#activity{
+  color: goldenrod;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 #profile{
-    font-size: large;
-    position: relative;left:10%;
-}     
-                        
 
-.picture{
+    font-size: 35px;
+
+    position: relative;
+}
+
+.picture {
     border-radius: 150%;
+    margin-right: 25px;
     width:150px;
     height:150px;
 }
 
 .user_info{
-    position: relative;left: 10%;
-    font: italic bold 12px/30px Georgia, serif}
+    position: relative;
+    color: black;
+    margin-top: 75px;
+    left: 40%;
+    font: 18px/30px serif}
 
-#user_name{
+#user_name {
     font-size: large;
 }
 
-
-#about_me{
-    background-color:white;
+#about_me {
+    margin-top: -10px;
+    font-family: serif;
+    background-color: white;
     border-color: white;
 }
 
@@ -370,10 +396,36 @@ a:hover {
 a {
     color: darkgoldenrod;
     text-decoration: none;
-
 }
 
 #sidebar {
     padding-top: 120px;
     ;
+}
+
+.picture-nav-positioning {
+    margin-top: 5px !important;
+}
+
+.search-nav {
+    padding-top: 7px;
+}
+
+.nav-pic {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.header-pad-rob {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+}
+
+.top-right-pic {
+    position: absolute;
+    top: 15px;
+    right: 19px;
 }

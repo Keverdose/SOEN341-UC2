@@ -43,12 +43,12 @@
                   @endauth
                 </div>
 
-                <div class= "col-sm-2"></div>
+
                 <div class="col-sm-4">
                   <img src="http://www.bluebison.net/sketchbook/2006/0506/monkey_snake_swimming.jpg"
                   class="image_water" alt="waterfall">
                 </div>
-                
+
                 </div>
               </div>
             </div>
