@@ -33,7 +33,7 @@
 
                   @else
                   <h2><b>Welcome, get answers to questions you didn't know you had.</b></h2>
-                  <p>StackUnderflow provides modivated web designers with a platform to share their
+                  <p>StackUnderflow provides motivated web designers with a platform to share their
                     knowledge and experience.</p>
 
                   </br><a href= '{{ route('register') }}'><button class = "btn btn-conu">
